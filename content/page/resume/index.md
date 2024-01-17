@@ -47,83 +47,82 @@ toc: false
 
 
 
-  <style>
-    /* General styles */
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-    }
 
-    h3 {
-      flex: 100%;
-    }
+### Skills
 
-    /* Styles for desktop layout */
-    @media (min-width: 768px) {
-      /* Skills section and its content on the right side */
-      h3:nth-of-type(1),
-      details:nth-of-type(1) {
-        flex: 35%;
-        margin-right: 20px;
-      }
+<details>
+  <summary>Operating Systems</summary>
 
-      /* Other sections and their content on the left side */
-      h3:not(:nth-of-type(1)),
-      details:not(:nth-of-type(1)) {
-        flex: 60%;
-        margin-right: 20px;
-      }
-    }
-  </style>
-  <title>CV Example</title>
-</head>
-<body>
-  <div>
-    <h3>Skills</h3>
-    <details>
-      <summary>Operating Systems</summary>
-      <ul>
-        <li>Installation, administration, resource sharing, backup policies</li>
-        <li><strong>Linux</strong>:
-          <ul>
-            <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
-            <li>Running Gnu/Linux as a main OS for 3 years</li>
-          </ul>
-        </li>
-        <li><strong>Windows</strong>:
-          <ul>
-            <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
-            <li>Windows Server <em>2016</em></li>
-          </ul>
-        </li>
-      </ul>
-    </details>
+  - Installation, administration, resource sharing, backup policies
+  - **Linux**:
+    - Distros based on: *Ubuntu*, *Debian*, *Arch*
+    - Running Gnu/Linux as a main OS for 3 years
+  - **Windows**:
+    - Windows *7*, *10*, *11*
+    - Windows Server *2016*
+</details>
 
-    <!-- Other skills details... -->
-  </div>
+<details>
+  <summary>Virtualization</summary>
 
-  <div>
-    <h3>Education</h3>
-    <p>Higher Institute of Technological Studies of Kairouan</p>
-  </div>
+  - **Platforms**: VMware Workstation, Qemu, Oracle VirtualBox
+  - **Managing**: Vagrant
+</details>
 
-  <div>
-    <h3>Languages</h3>
-    <ul>
-      <li>Arabic (Native)</li>
-      <li>English (B2)</li>
-      <li>French (B2)</li>
-    </ul>
-  </div>
+<details>
+  <summary>Containerization</summary>
 
-  <div>
-    <h3>Hobbies</h3>
-    <ul>
-      <li>Reading</li>
-      <li>Swimming</li>
-      <li>Traveling</li>
-    </ul>
-  </div>
-</body>
+  - **Platforms**: Docker, Podman
+  - **Managing**: Kubernetes
+</details>
+
+<details>
+  <summary>Cloud</summary>
+
+  - AWS
+</details>
+
+<details>
+  <summary>Programming languages</summary>
+
+  - Python
+  - Java
+  - JavaScript
+</details>
+
+<details>
+  <summary>DevOps tools</summary>
+
+  - Ansible
+  - Terraform
+  - Git, Github, Gitlab
+  - Jenkins
+  - Maven
+</details>
+
+<details>
+  <summary>Web servers</summary>
+
+  - Ngnix
+  - Apache
+</details>
+
+<details>
+  <summary>Networking administration</summary>
+
+  - **Protocols**: TCP/IP, DNS, DHCP, SNMP, VLANs, VPNs
+  - **Devices**: Routers, switches, firewalls, load balancers
+  - **Services**: Routing, NAT, QoS, IPv4/IPv6
+</details>
+
+
+#### Education:
+Higher Institute of Technological Studies of Kairouan
+#### Languages
+Arabic (Native)
+English (B2)
+French (B2)
+#### Hobbies
+Reading
+Swimming
+Traveling
