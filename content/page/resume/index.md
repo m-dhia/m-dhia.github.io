@@ -175,5 +175,11 @@ Traveling
       margin-right: 0;
       margin-bottom: 10px; /* Adjust as needed for spacing between rows */
     }
+
+    /* Add this new style to stack the content in each column vertically */
+    .column > * {
+      margin-bottom: 10px; /* Adjust as needed for spacing between items */
+    }
   }
 </style>
+
