@@ -9,7 +9,7 @@ menu:
 
 comments: false
 readingtime: false
-toc: true
+toc: false
 ---
 
 ### Mohamed Dhia Aouina
