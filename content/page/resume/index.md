@@ -60,12 +60,13 @@ Reading
 Swimming
 Traveling
 
+1
 
 <div class="columns">
   <div class="column">
     <!-- Content for the "Skills" section -->
     <h3>Skills</h3>
-
+block
 
 
 <details>
@@ -77,7 +78,7 @@ Traveling
     - Running Gnu/Linux as a main OS for 3 years <br>
   - **Windows**:<br>
     - Windows *7*, *10*, *11* <br>
-    - Windows Server *2016* <br>
+    - Windows Server *2016* - 5<br>
 </details>
 
 <details>
@@ -160,7 +161,16 @@ Traveling
     flex-wrap: wrap;
   }
 
-
+  .column {
+    flex: 1;
+    margin-right: 10px; /* Adjust as needed for spacing between columns */
+  }
+  @media (max-width: 1200px) {
+    .column > details {
+      display: flex; /* Force details elements to display in a block layout */
+      margin-bottom: 10px; /* Adjust as needed for spacing between details elements */
+    }
+  }
 
   /* Media query for mobile responsiveness */
   @media (max-width: 768px) {
