@@ -5,7 +5,7 @@ menu:
     main: 
         weight: 2
         params:
-            icon: book
+            icon: book-2
 
 comments: false
 ---
