@@ -48,7 +48,25 @@ toc: false
 
 
 
-### Skills
+
+#### Education:
+Higher Institute of Technological Studies of Kairouan
+#### Languages
+Arabic (Native)
+English (B2)
+French (B2)
+#### Hobbies
+Reading
+Swimming
+Traveling
+
+
+<div class="columns">
+  <div class="column">
+    <!-- Content for the "Skills" section -->
+    <h3>Skills</h3>
+
+
 
 <details>
   <summary>Operating Systems</summary>
@@ -115,44 +133,6 @@ toc: false
   - **Services**: Routing, NAT, QoS, IPv4/IPv6
 </details>
 
-
-#### Education:
-Higher Institute of Technological Studies of Kairouan
-#### Languages
-Arabic (Native)
-English (B2)
-French (B2)
-#### Hobbies
-Reading
-Swimming
-Traveling
-
-
-<div class="columns">
-  <div class="column">
-    <!-- Content for the "Skills" section -->
-    <h3>Skills</h3>
-    <details>
-      <summary>Operating Systems</summary>
-      <!-- Content for Operating Systems -->
-      <ul>
-        <li>Installation, administration, resource sharing, backup policies</li>
-        <li><strong>Linux</strong>:
-          <ul>
-            <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
-            <li>Running Gnu/Linux as a main OS for 3 years</li>
-          </ul>
-        </li>
-        <li><strong>Windows</strong>:
-          <ul>
-            <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
-            <li>Windows Server <em>2016</em></li>
-          </ul>
-        </li>
-      </ul>
-    </details>
-
-    <!-- Other skills details... -->
   </div>
 
   <div class="column">
