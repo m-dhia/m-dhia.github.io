@@ -47,29 +47,33 @@ toc: false
 
 
 
-
  <style>
-    /* Add styles for the flex container */
-    .flex-container {
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
 
-    /* Add styles for each flex item */
-    .flex-item {
-      flex: 1 1 30%; /* Adjust the width as needed */
-      margin: 0 10px 10px 0; /* Add margin between items */
+    h3 {
+      flex: 100%;
     }
 
-    /* Adjust styles for smaller screens (e.g., phones) */
-    @media (max-width: 768px) {
-      .flex-container {
-        flex-direction: column; /* Change to a column layout */
+    /* Styles for desktop layout */
+    @media (min-width: 768px) {
+      /* Skills section and its content on the right side */
+      h3:nth-of-type(1),
+      details:nth-of-type(1) {
+        flex: 30%;
+        margin-right: 20px;
       }
-      .flex-item {
-        flex: 1 1 100%; /* Full width for each item */
-        margin: 0 0 10px 0; /* Remove horizontal margin */
+
+      /* Other sections and their content on the left side */
+      h3:not(:nth-of-type(1)),
+      details:not(:nth-of-type(1)) {
+        flex: 65%;
+        margin-right: 20px;
       }
     }
   </style>
@@ -79,66 +83,36 @@ toc: false
   <h3>Skills</h3>
   <details>
     <summary>Operating Systems</summary>
-    <ul>
-      <li>Installation, administration, resource sharing, backup policies</li>
-      <li><strong>Linux</strong>:
-        <ul>
-          <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
-          <li>Running Gnu/Linux as a main OS for 3 years</li>
-        </ul>
-      </li>
-      <li><strong>Windows</strong>:
-        <ul>
-          <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
-          <li>Windows Server <em>2016</em></li>
-        </ul>
-      </li>
-    </ul>
+    <!-- Content for Operating Systems -->
   </details>
 
-  <div class="flex-container">
-    <div class="flex-item">
-      <details>
-        <summary>Virtualization</summary>
-        <ul>
-          <li><strong>Platforms</strong>: VMware Workstation, Qemu, Oracle VirtualBox</li>
-          <li><strong>Managing</strong>: Vagrant</li>
-        </ul>
-      </details>
-    </div>
-    <div class="flex-item">
-      <details>
-        <summary>Containerization</summary>
-        <ul>
-          <li><strong>Platforms</strong>: Docker, Podman</li>
-          <li><strong>Managing</strong>: Kubernetes</li>
-        </ul>
-      </details>
-    </div>
-    <div class="flex-item">
-      <details>
-        <summary>Cloud</summary>
-        <ul>
-          <li>AWS</li>
-        </ul>
-      </details>
-    </div>
-  </div>
+  <!-- Other sections and their content -->
+  <h3>Virtualization</h3>
+  <details>
+    <summary>Virtualization</summary>
+    <!-- Content for Virtualization -->
+  </details>
+
+  <h3>Containerization</h3>
+  <details>
+    <summary>Containerization</summary>
+    <!-- Content for Containerization -->
+  </details>
+
+  <h3>Cloud</h3>
+  <details>
+    <summary>Cloud</summary>
+    <!-- Content for Cloud -->
+  </details>
 
   <h3>Education</h3>
-  <p>Higher Institute of Technological Studies of Kairouan</p>
+  <!-- Content for Education -->
 
   <h3>Languages</h3>
-  <ul>
-    <li>Arabic (Native)</li>
-    <li>English (B2)</li>
-    <li>French (B2)</li>
-  </ul>
+  <!-- Content for Languages -->
 
   <h3>Hobbies</h3>
-  <ul>
-    <li>Reading</li>
-    <li>Swimming</li>
-    <li>Traveling</li>
-  </ul>
+  <!-- Content for Hobbies -->
 </body>
+
+
