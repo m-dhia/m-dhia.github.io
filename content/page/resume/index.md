@@ -33,3 +33,21 @@ toc: false
 #### Containerization
 - `Platforms`: Docker, Podman
 - `Managing`: Kubernetes
+#### Cloud
+- AWS
+#### Programming languages
+- Python
+- Java
+- Java Script
+#### DevOps tools
+- Ansible
+- Git, Github, Gitlab
+- Jenkins
+- Maven
+#### Web servers
+- Ngnix
+- Apache
+#### Networking administration
+- `Protocols`: TCP/IP, DNS, DHCP, SNMP, VLANs, VPNs
+- `Devices`: Routers, switches, firewalls, load balancers
+- `Services`: Routing, NAT, QoS, IPv4/IPv6
