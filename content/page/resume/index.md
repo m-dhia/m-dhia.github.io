@@ -65,28 +65,32 @@ Traveling
 <div class="columns">
   <div class="column">
     <!-- Content for the "Skills" section -->
-    <h3>Skills</h3>
-block
+       <details>
+      <summary>Operating Systems</summary>
+      <ul>
+        <li>Installation, administration, resource sharing, backup policies</li>
+        <li><strong>Linux</strong>:
+          <ul>
+            <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
+            <li>Running Gnu/Linux as a main OS for 3 years</li>
+          </ul>
+        </li>
+        <li><strong>Windows</strong>:
+          <ul>
+            <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
+            <li>Windows Server <em>2016</em> - 5</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary>Virtualization</summary>
+      <ul>
+        <li><strong>Platforms</strong>: VMware Workstation, Qemu, Oracle VirtualBox</li>
+        <li><strong>Managing</strong>: Vagrant</li>
+      </ul>
+    </details>
 
-
-<details>
-  <summary>Operating Systems</summary>
-
-  - Installation, administration, resource sharing, backup policies <br>
-  - **Linux**:<br>
-    - Distros based on: *Ubuntu*, *Debian*, *Arch* <br>
-    - Running Gnu/Linux as a main OS for 3 years <br>
-  - **Windows**:<br>
-    - Windows *7*, *10*, *11* <br>
-    - Windows Server *2016* - 5<br>
-</details>
-
-<details>
-  <summary>Virtualization</summary>
-
-  - **Platforms**: VMware Workstation, Qemu, Oracle VirtualBox
-  - **Managing**: Vagrant
-</details>
 
 <details>
   <summary>Containerization</summary>
@@ -165,10 +169,18 @@ block
     flex: 1;
     margin-right: 10px; /* Adjust as needed for spacing between columns */
   }
+
   @media (max-width: 1200px) {
     .column > details {
       display: flex; /* Force details elements to display in a block layout */
+      flex-direction: column; /* Stack the details content vertically */
       margin-bottom: 10px; /* Adjust as needed for spacing between details elements */
+    }
+
+    /* Adjust styles for summary and ul elements inside details */
+    .column > details > summary,
+    .column > details > ul {
+      margin-bottom: 5px; /* Adjust as needed for spacing between items */
     }
   }
 
@@ -181,11 +193,6 @@ block
     .column {
       margin-right: 0;
       margin-bottom: 10px; /* Adjust as needed for spacing between rows */
-    }
-
-    /* Add this new style to stack the content in each column vertically */
-    .column > * {
-      margin-bottom: 10px; /* Adjust as needed for spacing between items */
     }
   }
 </style>
