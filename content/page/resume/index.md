@@ -17,7 +17,7 @@ toc: false
  An IT student with a strong passion for the field <br>
  I'd describe myself as a fast learner, eager to take on any challenge <br>
 
- ![Phone icon](icons/phone.svg) [Phone Number](tel:+21628287368): +216 28 287 368
+ ![Phone icon](/icons/phone.svg) [Phone Number](tel:+21628287368): +216 28 287 368
 
 
 ### Skills
