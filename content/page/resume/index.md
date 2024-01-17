@@ -156,15 +156,20 @@ Traveling
   </div>
 
   <div class="column">
-    <!-- Content for the other sections -->
     <h3>Education</h3>
-    <!-- Content for Education -->
-
+    <p>Higher Institute of Technological Studies of Kairouan</p>
     <h3>Languages</h3>
-    <!-- Content for Languages -->
-
+    <ul>
+      <li>Arabic (Native)</li>
+      <li>English (B2)</li>
+      <li>French (B2)</li>
+    </ul>
     <h3>Hobbies</h3>
-    <!-- Content for Hobbies -->
+    <ul>
+      <li>Reading</li>
+      <li>Swimming</li>
+      <li>Traveling</li>
+    </ul>
   </div>
 </div>
 
