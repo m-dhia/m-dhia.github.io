@@ -41,6 +41,7 @@ toc: false
 - Java Script
 #### DevOps tools
 - Ansible
+- Terraform
 - Git, Github, Gitlab
 - Jenkins
 - Maven
