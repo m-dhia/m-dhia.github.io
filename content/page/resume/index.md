@@ -71,13 +71,13 @@ Traveling
 <details>
   <summary>Operating Systems</summary>
 
-  - Installation, administration, resource sharing, backup policies
-  - **Linux**:
-    - Distros based on: *Ubuntu*, *Debian*, *Arch*
-    - Running Gnu/Linux as a main OS for 3 years
-  - **Windows**:
-    - Windows *7*, *10*, *11*
-    - Windows Server *2016*
+  - Installation, administration, resource sharing, backup policies <br>
+  - **Linux**:<br>
+    - Distros based on: *Ubuntu*, *Debian*, *Arch* <br>
+    - Running Gnu/Linux as a main OS for 3 years <br>
+  - **Windows**:<br>
+    - Windows *7*, *10*, *11* <br>
+    - Windows Server *2016* - 5<br>
 </details>
 
 <details>
