@@ -77,7 +77,7 @@ Traveling
     - Running Gnu/Linux as a main OS for 3 years <br>
   - **Windows**:<br>
     - Windows *7*, *10*, *11* <br>
-    - Windows Server *2016* - 5<br>
+    - Windows Server *2016* <br>
 </details>
 
 <details>
@@ -160,16 +160,7 @@ Traveling
     flex-wrap: wrap;
   }
 
-  .column {
-    flex: 1;
-    margin-right: 10px; /* Adjust as needed for spacing between columns */
-  }
-  @media (max-width: 1200px) {
-    .column > details {
-      display: block; /* Force details elements to display in a block layout */
-      margin-bottom: 10px; /* Adjust as needed for spacing between details elements */
-    }
-  }
+
 
   /* Media query for mobile responsiveness */
   @media (max-width: 768px) {
