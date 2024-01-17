@@ -146,9 +146,9 @@ Traveling
     </ul>
     <h3>Hobbies</h3>
     <ul>
-      <li>Reading</li>
-      <li>Swimming</li>
-      <li>Traveling</li>
+     <li>Reading<br></li>
+     <li>Swimming<br></li>
+     <li>Traveling<br></li>
     </ul>
   </div>
 </div>
