@@ -47,7 +47,7 @@ toc: false
 
 
 
- <style>
+  <style>
     /* General styles */
     body {
       font-family: Arial, sans-serif;
@@ -65,14 +65,14 @@ toc: false
       /* Skills section and its content on the right side */
       h3:nth-of-type(1),
       details:nth-of-type(1) {
-        flex: 30%;
+        flex: 35%;
         margin-right: 20px;
       }
 
       /* Other sections and their content on the left side */
       h3:not(:nth-of-type(1)),
       details:not(:nth-of-type(1)) {
-        flex: 65%;
+        flex: 60%;
         margin-right: 20px;
       }
     }
@@ -80,39 +80,50 @@ toc: false
   <title>CV Example</title>
 </head>
 <body>
-  <h3>Skills</h3>
-  <details>
-    <summary>Operating Systems</summary>
-    <!-- Content for Operating Systems -->
-  </details>
+  <div>
+    <h3>Skills</h3>
+    <details>
+      <summary>Operating Systems</summary>
+      <ul>
+        <li>Installation, administration, resource sharing, backup policies</li>
+        <li><strong>Linux</strong>:
+          <ul>
+            <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
+            <li>Running Gnu/Linux as a main OS for 3 years</li>
+          </ul>
+        </li>
+        <li><strong>Windows</strong>:
+          <ul>
+            <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
+            <li>Windows Server <em>2016</em></li>
+          </ul>
+        </li>
+      </ul>
+    </details>
 
-  <!-- Other sections and their content -->
-  <h3>Virtualization</h3>
-  <details>
-    <summary>Virtualization</summary>
-    <!-- Content for Virtualization -->
-  </details>
+    <!-- Other skills details... -->
+  </div>
 
-  <h3>Containerization</h3>
-  <details>
-    <summary>Containerization</summary>
-    <!-- Content for Containerization -->
-  </details>
+  <div>
+    <h3>Education</h3>
+    <p>Higher Institute of Technological Studies of Kairouan</p>
+  </div>
 
-  <h3>Cloud</h3>
-  <details>
-    <summary>Cloud</summary>
-    <!-- Content for Cloud -->
-  </details>
+  <div>
+    <h3>Languages</h3>
+    <ul>
+      <li>Arabic (Native)</li>
+      <li>English (B2)</li>
+      <li>French (B2)</li>
+    </ul>
+  </div>
 
-  <h3>Education</h3>
-  <!-- Content for Education -->
-
-  <h3>Languages</h3>
-  <!-- Content for Languages -->
-
-  <h3>Hobbies</h3>
-  <!-- Content for Hobbies -->
+  <div>
+    <h3>Hobbies</h3>
+    <ul>
+      <li>Reading</li>
+      <li>Swimming</li>
+      <li>Traveling</li>
+    </ul>
+  </div>
 </body>
-
-
