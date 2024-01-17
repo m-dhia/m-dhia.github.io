@@ -20,7 +20,7 @@ toc: false
 ### Skills
 
 #### Operating Systems
-***nstallation, administration, resource sharing, backup policies***
+***Installation, administration, resource sharing, backup policies***
 - `Linux`:
     - Distros based on: *Ubuntu* / *Debian* / *Arch*
     - Running Gnu/Linux as a main os for 3 years
