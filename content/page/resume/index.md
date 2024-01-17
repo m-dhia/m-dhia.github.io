@@ -126,3 +126,69 @@ French (B2)
 Reading
 Swimming
 Traveling
+
+
+<div class="columns">
+  <div class="column">
+    <!-- Content for the "Skills" section -->
+    <h3>Skills</h3>
+    <details>
+      <summary>Operating Systems</summary>
+      <!-- Content for Operating Systems -->
+      <ul>
+        <li>Installation, administration, resource sharing, backup policies</li>
+        <li><strong>Linux</strong>:
+          <ul>
+            <li>Distros based on: <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em></li>
+            <li>Running Gnu/Linux as a main OS for 3 years</li>
+          </ul>
+        </li>
+        <li><strong>Windows</strong>:
+          <ul>
+            <li>Windows <em>7</em>, <em>10</em>, <em>11</em></li>
+            <li>Windows Server <em>2016</em></li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+
+    <!-- Other skills details... -->
+  </div>
+
+  <div class="column">
+    <!-- Content for the other sections -->
+    <h3>Education</h3>
+    <!-- Content for Education -->
+
+    <h3>Languages</h3>
+    <!-- Content for Languages -->
+
+    <h3>Hobbies</h3>
+    <!-- Content for Hobbies -->
+  </div>
+</div>
+
+<style>
+  /* CSS for the columns */
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex: 1;
+    margin-right: 10px; /* Adjust as needed for spacing between columns */
+  }
+
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .columns {
+      flex-direction: column;
+    }
+
+    .column {
+      margin-right: 0;
+      margin-bottom: 10px; /* Adjust as needed for spacing between rows */
+    }
+  }
+</style>
