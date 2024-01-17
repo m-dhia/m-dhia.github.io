@@ -21,8 +21,8 @@ toc: false
 
 #### Operating Systems
 - `Linux`:
- - *Ubuntu* / *Debian* / *Arch* based distros
- - Running Gnu/Linux as a main machine for 3 years
+    - *Ubuntu* / *Debian* / *Arch* based distros
+    - Running Gnu/Linux as a main machine for 3 years
 - `Windows`:
- - Windows *7* / *10* / *11*
- - Windows Server 2016
+    - Windows *7* / *10* / *11*
+    - Windows Server 2016
