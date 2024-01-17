@@ -77,7 +77,7 @@ Traveling
     - Running Gnu/Linux as a main OS for 3 years <br>
   - **Windows**:<br>
     - Windows *7*, *10*, *11* <br>
-    - Windows Server *2016* - 5<br>
+    - Windows Server *2016* <br>
 </details>
 
 <details>
@@ -176,10 +176,7 @@ Traveling
       margin-bottom: 10px; /* Adjust as needed for spacing between rows */
     }
 
-    /* Add this new style to stack the content in each column vertically */
-    .column > * {
-      margin-bottom: 10px; /* Adjust as needed for spacing between items */
-    }
+
   }
 </style>
 
