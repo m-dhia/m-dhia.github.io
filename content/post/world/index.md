@@ -32,11 +32,19 @@ sidebar: true
     </div>
     <div style="flex: 1; padding-left: 10px;">
         Right Column:
-       <ul style="list-style-type: none;">
-  <li>awards</li>
-  <li>volunteer</li>
-  <li>languages</li>
-  <li>Deez</li>
+<ul style="list-style-type: none;">
+  <li>
+    <h3>Languages</h3>
+    <ul style="list-style-type: disc;">
+      <li>Arabic (Native)</li>
+      <li>English (B2)</li>
+      <li>French (B2)</li>
+    </ul>
+  </li>
+  <li>
+    <h3>Education</h3>
+    <p>Higher Institute of Technological Studies of Kairouan</p>
+  </li>
   <li>
     <h3>Hobbies</h3>
     <ul style="list-style-type: disc;">
@@ -45,6 +53,5 @@ sidebar: true
       <li>Traveling</li>
     </ul>
   </li>
-</ul>
-    </div>
+</ul>iv>
 </div>
