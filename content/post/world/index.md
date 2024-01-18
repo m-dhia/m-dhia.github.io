@@ -1,6 +1,6 @@
 ---
-layout: resume
-title: Resume
+
+title: hi
 permalink: /hiboysh/
 description: >
   Hi, I'm DaeIn Lee, SW engineer at Samsung Research.
