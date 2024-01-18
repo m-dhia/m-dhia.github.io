@@ -37,7 +37,12 @@ sidebar: true
             <li>volunteer</li>
             <li>languages</li>
             <li>skills</li>
-            <li>interests</li>
+            <li><h3>Hobbies</h3>
+            <ul>
+            <li>Reading</li>
+            <li>Swimming</li>
+            <li>Traveling</li>
+            </ul></li>
         </ul>
     </div>
 </div>
