@@ -16,7 +16,8 @@ toc: false
  Hello, I am **Mohamed Dhia Aouina** from ISET Kr <br>
  An IT student with a strong passion for the field <br>
  I'd describe myself as a fast learner, eager to take on any challenge <br>
-<body>
+
+<div>
    <!-- Social medias -->
   <style>
     /* Styles for desktop/laptop */
@@ -69,12 +70,12 @@ toc: false
         </li>
       </ul>
       <style>
-</body>
+</div>
 
 
 
 
-<body>
+<div>
   @media (max-width: 600px) {
 
     /* Apply styles for screens smaller than 600px (e.g., phones) */
@@ -232,4 +233,4 @@ toc: false
       </li>
     </ul>
   </div>
-</body>
+<div>
