@@ -53,5 +53,5 @@ sidebar: true
       <li>Traveling</li>
     </ul>
   </li>
-</ul>iv>
+</ul>
 </div>
