@@ -23,7 +23,7 @@ sidebar: true
     <div style="flex: 1; padding-right: 10px;">
         Left Column:
         <ul>
-            <li>
+            <li style="list-style-type: none;">
             <details>
   <summary>Operating Systems</summary>
   <ul>
