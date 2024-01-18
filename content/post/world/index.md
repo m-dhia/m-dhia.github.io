@@ -32,17 +32,19 @@ sidebar: true
     </div>
     <div style="flex: 1; padding-left: 10px;">
         Right Column:
-        <ul>
-            <li>awards</li>
-            <li>volunteer</li>
-            <li>languages</li>
-            <li>Deez</li>
-            <h3>Hobbies</h3>
-            <ul>
-            <li>Reading</li>
-            <li>Swimming</li>
-            <li>Traveling</li>
-            </ul>
-        </ul>
+       <ul style="list-style-type: none;">
+  <li>awards</li>
+  <li>volunteer</li>
+  <li>languages</li>
+  <li>Deez</li>
+  <li>
+    <h3>Hobbies</h3>
+    <ul style="list-style-type: disc;">
+      <li>Reading</li>
+      <li>Swimming</li>
+      <li>Traveling</li>
+    </ul>
+  </li>
+</ul>
     </div>
 </div>
