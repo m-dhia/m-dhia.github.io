@@ -75,7 +75,7 @@ toc: false
 
 
 
-<div>
+
   @media (max-width: 600px) {
 
     /* Apply styles for screens smaller than 600px (e.g., phones) */
@@ -233,4 +233,3 @@ toc: false
       </li>
     </ul>
   </div>
-<div>
