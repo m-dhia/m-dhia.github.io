@@ -24,6 +24,7 @@ sidebar: true
         Left Column:
         <ul>
             <li style="list-style-type: none;">
+            <h3>Skills</h3>
             <details>
   <summary>Operating Systems</summary>
   <ul>
