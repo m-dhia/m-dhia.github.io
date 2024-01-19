@@ -173,10 +173,10 @@ toc: false
               </svg> &nbsp; &nbsp; Languages
             </h3>
             <ul style="list-style-type: disc;">
-              <li>Arabic (Native)</li>
-              <li>English (B2)</li>
-              <li>French (B2)</li>
-              <li>Dutch (A2)</li>
+              <li>Arabic   (Native)</li>
+              <li>English  (B2)</li>
+              <li>French   (B2)</li>
+              <li>Dutch    (A2)</li>
             </ul>
           </li>
           <li>
