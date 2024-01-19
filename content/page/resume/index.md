@@ -1,6 +1,6 @@
 ---
 title: Resume
-
+description: Mohamed Dhia's resume
 menu:
     main: 
         weight: 2
