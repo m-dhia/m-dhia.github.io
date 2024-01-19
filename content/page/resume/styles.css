@@ -1,5 +1,7 @@
- /* styles.css */
-#social-media .names ul {
+/* styles.css */
+
+/* Styles for desktop/laptop */
+.names ul {
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
@@ -7,10 +9,9 @@
 
 /* Styles for mobile */
 @media (max-width: 600px) {
-  #social-media .names ul {
+  .names ul {
     columns: 1;
     -webkit-columns: 1;
     -moz-columns: 1;
   }
 }
-
