@@ -59,7 +59,7 @@ toc: false
     </div>
     <div id="flex-container" style="display: flex;">
       <div style="flex: 1; padding-right: 10px;">
-        <!-- Left Column Content --> Left Column: <ul>
+        <!-- Left Column Content --> <ul>
           <li style="list-style-type: none;">
             <h3>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -160,7 +160,7 @@ toc: false
         </ul>
       </div>
       <div style="flex: 1; padding-left: 10px;">
-        <!-- Right Column Content --> Right Column: <ul style="list-style-type: none;">
+        <!-- Right Column Content --> <ul style="list-style-type: none;">
           <li>
             <h3>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
