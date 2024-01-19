@@ -21,9 +21,9 @@ toc: false
   </head>
   <body>
     <h1>Mohamed Dhia Aouina</h1>
-    <p>Hello, I am <strong>Mohamed Dhia Aouina</strong> from ISET Kr. </p>
-    <p>An IT student with a strong passion for the field.</p>
-    <p>I'd describe myself as a fast learner, eager to take on any challenge.</p>
+    Hello, I am <strong>Mohamed Dhia Aouina</strong> from ISET Kr. </br>
+    An IT student with a strong passion for the field.</br>
+    I'd describe myself as a fast learner, eager to take on any challenge.</br>
     <div id="social-media" class="names">
       <ul>
         <li>
