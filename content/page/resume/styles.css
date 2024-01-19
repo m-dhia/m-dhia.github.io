@@ -1,4 +1,4 @@
-/* styles.css */
+/* contacts */
 
 /* Styles for desktop/laptop */
 .names ul {
@@ -13,5 +13,13 @@
     columns: 1;
     -webkit-columns: 1;
     -moz-columns: 1;
+  }
+}
+
+/* Details */
+@media (max-width: 600px) {
+  /* Apply styles for screens smaller than 600px (e.g., phones) */
+  #flex-container {
+    flex-direction: column; /* Stack columns vertically */
   }
 }
