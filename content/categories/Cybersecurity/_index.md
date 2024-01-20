@@ -1,7 +1,7 @@
 ---
 title: Cybersecurity
 description: "Cybersecurity: Because 'password123' isn't a good idea!"
-image: hacker.jpg
+image: lock.jpg
 
 # Badge style
 style:
