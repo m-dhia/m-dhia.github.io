@@ -34,4 +34,4 @@ links:
 
 ---
 
-## My Accounts:
+## My Accounts
