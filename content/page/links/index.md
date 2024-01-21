@@ -21,6 +21,6 @@ links:
   - title: Linkedin
     description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
     website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
-    image: https://icons8.com/icon/Pz213it3TQxp/linkedin
+    image: logos/github.svg
 ---
 
