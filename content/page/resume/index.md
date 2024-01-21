@@ -6,7 +6,7 @@ menu:
         weight: 2
         params:
             icon: book-2
-
+cover: avatar.png
 comments: false
 readingtime: false
 toc: false
