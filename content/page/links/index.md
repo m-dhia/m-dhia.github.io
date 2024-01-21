@@ -8,7 +8,8 @@ menu:
             icon: link
 
 comments: false
-
+readingtime: false
+toc: false
 links:
   - title: GitHub
     description: GitHub is the world's largest software development platform.
@@ -33,3 +34,4 @@ links:
 
 ---
 
+## My Accounts:
