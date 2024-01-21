@@ -22,6 +22,10 @@ links:
     description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
     website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
     image: logo/stackoverflow.svg
+  - title: Upwork
+    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+    website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
+    image: logo/upwork.svg
   - title: Facebook
     description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
     website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
