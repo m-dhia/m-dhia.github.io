@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VirtualBox on m-dhia</title><link>https://m-dhia.github.io/tags/virtualbox/</link><description>Recent content in VirtualBox on m-dhia</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 04 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://m-dhia.github.io/tags/virtualbox/index.xml" rel="self" type="application/rss+xml"/><item><title>Kubernetes on Vagrant and VirtualBox: Quick Setup</title><link>https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/</link><pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/</guid><description>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/cover.webp" alt="Featured image of post Kubernetes on Vagrant and VirtualBox: Quick Setup" />&lt;p>I am working with the &lt;a class="link" href="https://github.com/eazytraining/kubernetes-certification-stack" target="_blank" rel="noopener"
+>kubernetes-certification-stack&lt;/a> repository owned by &lt;a class="link" href="https://github.com/eazytraining" target="_blank" rel="noopener"
+>eazytraining&lt;/a>.&lt;/p>
+&lt;h2 id="benefits-of-local-implementation">Benefits of Local Implementation&lt;/h2>
+&lt;p>Setting up a Kubernetes cluster with Vagrant and VirtualBox, using a master and worker node configuration, can be beneficial for several reasons:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Learning and Development Environment:&lt;/strong> Using Vagrant and VirtualBox allows you to quickly set up a local environment that mirrors a production Kubernetes cluster. This can be useful for learning Kubernetes concepts, testing configurations, and developing applications that will eventually run on a production Kubernetes cluster.&lt;/li>
+&lt;li>&lt;strong>Isolation and Portability:&lt;/strong> Vagrant provides a way to manage virtual machine configurations as code, allowing you to define the entire cluster setup in a version-controlled configuration file. VirtualBox provides the virtualization platform, ensuring that the cluster runs in isolated environments that can be easily replicated across different machines.&lt;/li>
+&lt;li>&lt;strong>Integration Testing:&lt;/strong> With a local Kubernetes cluster, you can easily perform integration tests for your applications without affecting a production environment. This can be especially useful for testing how your applications interact with Kubernetes features like networking, storage, and security.&lt;/li>
+&lt;/ul>
+&lt;h2 id="implementation">Implementation&lt;/h2>
+&lt;h3 id="cloning-the-repository">Cloning the repository&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/eazytraining/kubernetes-certification-stack.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> kubernetes-certification-stack
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="vagrant">Vagrant&lt;/h3>
+&lt;h4 id="starting-vagrant-environment">Starting Vagrant Environment&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vagrant up
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="troubleshooting-tips">Troubleshooting tips&lt;/h5>
+&lt;ul>
+&lt;li>For best results, use these scripts with a stable internet connection.&lt;/li>
+&lt;li>Even if it appears that the process is stalled, avoid canceling it.&lt;/li>
+&lt;li>If the process is canceled or interrupted, delete the virtual machines and rerun the Vagrantfile.&lt;/li>
+&lt;li>If you encounter the IP address configuration error depicted in the image below, create a new file at &lt;code>/etc/vbox/networks.conf&lt;/code> and add the following lines to it:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">* 10.0.0.0/8 192.168.0.0/16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">* 2001::/64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error.png"
+width="811"
+height="208"
+srcset="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error_hude566a48c076cda5ecd4e66188b3e862_10342_480x0_resize_box_3.png 480w, https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error_hude566a48c076cda5ecd4e66188b3e862_10342_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="IP-configuration-error"
+class="gallery-image"
+data-flex-grow="389"
+data-flex-basis="935px"
+>&lt;/p>
+&lt;h4 id="ssh-into-vagrant-master-node">SSH into Vagrant Master Node&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vagrant ssh master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="check-kubernetes-nodes-status">Check Kubernetes Nodes Status&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo kubectl get nodes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes.webp"
+width="1920"
+height="1080"
+srcset="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes_hufa60634cf9048f57efdf3bcfb24a8dd3_88736_480x0_resize_q75_h2_box_2.webp 480w, https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes_hufa60634cf9048f57efdf3bcfb24a8dd3_88736_1024x0_resize_q75_h2_box_2.webp 1024w"
+loading="lazy"
+alt="Checking-nodes"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;h2 id="code-explanation">Code Explanation&lt;/h2>
+&lt;h3 id="vagrantfile">Vagrantfile&lt;/h3>
+&lt;p>This Vagrantfile sets up a multi-node Kubernetes cluster with one master node and one worker node. Each node is configured with a base box (&lt;em>geerlingguy/centos7&lt;/em>), a static IP address, hostname, memory, CPU, and provisioned with a shell script for installing Kubernetes.&lt;/p>
+&lt;h4 id="vagrant-configuration-version-and-block">Vagrant Configuration Version and Block&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="no">Vagrant&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">configure&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The &lt;code>Vagrant.configure&lt;/code> method specifies the Vagrant configuration version.&lt;/p>
+&lt;h4 id="master-node-configuration">Master Node Configuration&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">define&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">master&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">box&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;geerlingguy/centos7&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="s2">&amp;#34;private_network&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">type&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;static&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">ip&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hostname&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provider&lt;/span> &lt;span class="s2">&amp;#34;virtualbox&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">memory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provision&lt;/span> &lt;span class="ss">:shell&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">shell&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;install_kubernetes.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>The &lt;code>config.vm.define&lt;/code> block defines a virtual machine named &amp;ldquo;master&amp;rdquo; with specific configurations.&lt;/li>
+&lt;li>It specifies the base box to use (&lt;em>geerlingguy/centos7&lt;/em>), sets up a private static IP address (192.168.99.10), and assigns the hostname &amp;ldquo;master&amp;rdquo;.&lt;/li>
+&lt;li>The &lt;code>config.vm.provider&lt;/code> block configures the virtual machine provider (in this case, VirtualBox) settings such as name, memory (2048 MB), and CPUs (2).&lt;/li>
+&lt;li>The &lt;code>config.vm.provision&lt;/code> block specifies provisioning using a shell script (&lt;code>install_kubernetes.sh&lt;/code>) with arguments &amp;ldquo;master&amp;rdquo; and &amp;ldquo;192.168.99.10&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;h4 id="worker-node-configuration-loop">Worker Node Configuration Loop&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">workers&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ram_worker&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cpu_worker&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">..&lt;/span>&lt;span class="n">workers&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">each&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">define&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">worker&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">box&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;geerlingguy/centos7&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="s2">&amp;#34;private_network&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">type&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;static&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">ip&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.1&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hostname&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provider&lt;/span> &lt;span class="s2">&amp;#34;virtualbox&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">memory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ram_worker&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cpu_worker&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provision&lt;/span> &lt;span class="ss">:shell&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">shell&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;install_kubernetes.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;node&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block sets up a loop to define worker nodes based on the &lt;code>workers&lt;/code>, &lt;code>ram_worker&lt;/code>, and &lt;code>cpu_worker&lt;/code> variables.&lt;/li>
+&lt;li>Inside the loop, each worker node is defined with similar configurations as the master node, except for the specific IP address, hostname, and name.&lt;/li>
+&lt;/ul>
+&lt;h3 id="install_kubernetessh">install_kubernetes.sh&lt;/h3>
+&lt;p>This script automates the setup process for a Kubernetes environment using Ansible, including installing necessary packages, and executing Ansible playbooks based on the type of node (master or worker). It also provides informative messages about the setup process and the IP address to be used for the stack.&lt;/p>
+&lt;h4 id="updating-and-installing-packages">Updating and Installing Packages&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>yum -y update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install epel-release
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>The script starts with the shebang line &lt;code>#!/bin/bash&lt;/code> to indicate that it should be executed by the Bash shell.&lt;/li>
+&lt;li>It then updates the system (&lt;code>yum -y update&lt;/code>) and installs the epel-release package, which provides additional packages for CentOS/RHEL.&lt;/li>
+&lt;/ul>
+&lt;h4 id="installing-ansible-and-git">Installing Ansible and Git&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># install ansible&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install ansible
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># retrieve ansible code&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This part installs Ansible (&lt;code>yum -y install ansible&lt;/code>) and Git (&lt;code>yum -y install git&lt;/code>) on the system, which are used for configuration management and version control, respectively.&lt;/li>
+&lt;/ul>
+&lt;h4 id="ansible-playbook-execution">Ansible Playbook Execution&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">KUBERNETES_VERSION&lt;/span>&lt;span class="o">=&lt;/span>1.28.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ansible-galaxy install -r roles/requirements.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="nv">$1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This part sets the variable &lt;code>KUBERNETES_VERSION&lt;/code> to &lt;code>1.28.1&lt;/code> and installs Ansible roles defined in &lt;code>roles/requirements.yml&lt;/code> using &lt;code>ansible-galaxy install -r roles/requirements.yml&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>The &lt;code>ansible&lt;/code> command runs Ansible playbooks, which are YAML files with tasks for remote hosts, while &lt;code>ansible-galaxy&lt;/code> allows users to search, install, and manage roles from the Ansible Galaxy community or their own private repositories.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>It then checks the value of the first argument passed to the script (&lt;code>$1&lt;/code>). If it is equal to &amp;ldquo;master&amp;rdquo;, it executes an Ansible playbook for setting up a Kubernetes master node. Otherwise, it executes an Ansible playbook for setting up a worker node.&lt;/li>
+&lt;/ul>
+&lt;h4 id="final-steps-and-outputs">Final Steps and Outputs&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;For this Stack, you will use &lt;/span>&lt;span class="k">$(&lt;/span>ip -f inet addr show enp0s8 &lt;span class="p">|&lt;/span> sed -En -e &lt;span class="s1">&amp;#39;s/.*inet ([0-9.]+).*/\1/p&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>&lt;span class="s2"> IP Address&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Depending on whether the node is a master or worker, the script executes different steps related to Kubernetes setup.&lt;/li>
+&lt;li>Finally, it outputs a message indicating the IP address to be used for the stack, based on the network interface &lt;code>enp0s8&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="rolerequirementsyml">role/requirements.yml&lt;/h3>
+&lt;p>This YAML file define the dependencies or roles required for setting up a Kubernetes environment using Ansible. Each role is specified with its source (src) and version (version). When this file is used with Ansible, it instructs Ansible to download and install these roles from the specified sources (e.g., Ansible Galaxy) before executing the main playbook that uses these roles.&lt;/p>
+&lt;h4 id="install-a-role-for-pip">Install a Role for Pip&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.pip&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;2.2.0&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.pip&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The &lt;code>src&lt;/code> key specifies the source of the role (geerlingguy.pip).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;2.2.0&amp;rdquo;).&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-a-role-for-pip-1">Install a Role for Pip&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.containerd&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;1.3.1&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.containerd&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The src key specifies the source of the role (&lt;em>geerlingguy.containerd&lt;/em>).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;1.3.1&amp;rdquo;).&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-kubernetes">Install Kubernetes&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.kubernetes&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;7.1.2&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.kubernetes&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The &lt;code>src&lt;/code> key specifies the source of the role (geerlingguy.kubernetes).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;7.1.2&amp;rdquo;).&lt;/li>
+&lt;/ul></description></item></channel></rss>

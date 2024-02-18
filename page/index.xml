@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on m-dhia</title><link>https://m-dhia.github.io/page/</link><description>Recent content in Pages on m-dhia</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://m-dhia.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Archives</title><link>https://m-dhia.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/archives/</guid><description/></item><item><title>Links</title><link>https://m-dhia.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/links/</guid><description>&lt;h2 id="my-accounts">My Accounts&lt;/h2>
+&lt;!--
+- title: Stackoverflow
+description: Stack Overflow is a question and answer platform for professional and enthusiast programmers.
+website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
+image: logo/stackoverflow.svg
+--></description></item><item><title>Resume</title><link>https://m-dhia.github.io/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/resume/</guid><description>&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;link rel="stylesheet" href="styles.css">
+&lt;/head>
+&lt;body>
+&lt;h1>Mohamed Dhia Aouina&lt;/h1>
+Hello, I am &lt;strong>Mohamed Dhia Aouina&lt;/strong> from ISET Kr. &lt;/br>
+An IT student with a strong passion for the field.&lt;/br>
+I'd describe myself as a fast learner, eager to take on any challenge.&lt;/br>
+&lt;div id="social-media" class="names">
+&lt;ul>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+&lt;/svg>: &lt;a href="tel:+21628287368">(+216) 28-287-368&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+&lt;path d="M3 7l9 6l9 -6" />
+&lt;/svg>: &lt;a href="mailto:mdhiaaouina@outlook.com" >mdhiaaouina@outlook.com&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+&lt;/svg>: &lt;a href="https://github.com/m-dhia" target="_blank">m-dhia&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+&lt;path d="M8 11l0 5" />
+&lt;path d="M8 8l0 .01" />
+&lt;path d="M12 16l0 -5" />
+&lt;path d="M16 16v-3a2 2 0 0 0 -4 0" />
+&lt;/svg>: &lt;a href="https://www.linkedin.com/in/mohamed-dhia-aouina-68788a2b5/" target="_blank">Linkedin&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div id="flex-container" style="display: flex;">
+&lt;div style="flex: 1; padding-right: 10px;">
+&lt;!-- Left Column Content --> &lt;ul>
+&lt;li style="list-style-type: none;">
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M3 19l18 0" />
+&lt;path d="M5 6m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Skills
+&lt;/h3>
+&lt;details>
+&lt;summary>Operating Systems&lt;/summary>
+&lt;ul>
+&lt;p>Installation, administration, resource sharing, backup policies&lt;/p>
+&lt;li>
+&lt;strong>Linux&lt;/strong>: &lt;ul>
+&lt;li>Distros based on: &lt;em>Ubuntu&lt;/em>, &lt;em>Debian&lt;/em>, &lt;em>Arch&lt;/em>
+&lt;/li>
+&lt;li>Running Gnu/Linux as a main OS for 3 years&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;strong>Windows&lt;/strong>: &lt;ul>
+&lt;li>Windows &lt;em>7&lt;/em>, &lt;em>10&lt;/em>, &lt;em>11&lt;/em>
+&lt;/li>
+&lt;li>Windows Server &lt;em>2016&lt;/em>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Virtualization&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Platforms&lt;/strong>: VMware Workstation, Qemu, Oracle VirtualBox
+&lt;/li>
+&lt;li>
+&lt;strong>Managing&lt;/strong>: Vagrant
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Containerization&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Platforms&lt;/strong>: Docker, Podman
+&lt;/li>
+&lt;li>
+&lt;strong>Managing&lt;/strong>: Kubernetes
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Cloud&lt;/summary>
+&lt;ul>
+&lt;li>AWS&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Programming languages&lt;/summary>
+&lt;ul>
+&lt;li>Python&lt;/li>
+&lt;li>Java&lt;/li>
+&lt;li>JavaScript&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>DevOps tools&lt;/summary>
+&lt;ul>
+&lt;li>Ansible&lt;/li>
+&lt;li>Terraform&lt;/li>
+&lt;li>Git, Github, Gitlab&lt;/li>
+&lt;li>Jenkins&lt;/li>
+&lt;li>Maven&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Web servers&lt;/summary>
+&lt;ul>
+&lt;li>Ngnix&lt;/li>
+&lt;li>Apache&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Networking administration&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Protocols&lt;/strong>: TCP/IP, DNS, DHCP, SNMP, VLANs, VPNs
+&lt;/li>
+&lt;li>
+&lt;strong>Devices&lt;/strong>: Routers, switches, firewalls, load balancers
+&lt;/li>
+&lt;li>
+&lt;strong>Services&lt;/strong>: Routing, NAT, QoS, IPv4/IPv6
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Documentation&lt;/summary>
+&lt;ul>
+&lt;li>markdown&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div style="flex: 1; padding-left: 10px;">
+&lt;!-- Right Column Content --> &lt;ul style="list-style-type: none;">
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M4 5h7" />
+&lt;path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+&lt;path d="M5 9c0 2.144 2.952 3.908 6.7 4" />
+&lt;path d="M12 20l4 -9l4 9" />
+&lt;path d="M19.1 18h-6.2" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Languages
+&lt;/h3>
+&lt;ul style="list-style-type: disc;">
+&lt;li>Arabic (Native)&lt;/li>
+&lt;li>English (B2)&lt;/li>
+&lt;li>French (B2)&lt;/li>
+&lt;li>Dutch (A2)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-school" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+&lt;path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Education
+&lt;/h3>
+&lt;p>Higher Institute of Technological Studies of Kairouan&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Interests
+&lt;/h3>
+&lt;ul style="list-style-type: disc;">
+&lt;li>Reading&lt;/li>
+&lt;li>Swimming&lt;/li>
+&lt;li>Traveling&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/body>
+&lt;/html></description></item><item><title>Search</title><link>https://m-dhia.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/search/</guid><description/></item></channel></rss>

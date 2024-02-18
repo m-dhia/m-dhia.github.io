@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>m-dhia</title><link>https://m-dhia.github.io/</link><description>Recent content on m-dhia</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 04 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://m-dhia.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Kubernetes on Vagrant and VirtualBox: Quick Setup</title><link>https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/</link><pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/</guid><description>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/cover.webp" alt="Featured image of post Kubernetes on Vagrant and VirtualBox: Quick Setup" />&lt;p>I am working with the &lt;a class="link" href="https://github.com/eazytraining/kubernetes-certification-stack" target="_blank" rel="noopener"
+>kubernetes-certification-stack&lt;/a> repository owned by &lt;a class="link" href="https://github.com/eazytraining" target="_blank" rel="noopener"
+>eazytraining&lt;/a>.&lt;/p>
+&lt;h2 id="benefits-of-local-implementation">Benefits of Local Implementation&lt;/h2>
+&lt;p>Setting up a Kubernetes cluster with Vagrant and VirtualBox, using a master and worker node configuration, can be beneficial for several reasons:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Learning and Development Environment:&lt;/strong> Using Vagrant and VirtualBox allows you to quickly set up a local environment that mirrors a production Kubernetes cluster. This can be useful for learning Kubernetes concepts, testing configurations, and developing applications that will eventually run on a production Kubernetes cluster.&lt;/li>
+&lt;li>&lt;strong>Isolation and Portability:&lt;/strong> Vagrant provides a way to manage virtual machine configurations as code, allowing you to define the entire cluster setup in a version-controlled configuration file. VirtualBox provides the virtualization platform, ensuring that the cluster runs in isolated environments that can be easily replicated across different machines.&lt;/li>
+&lt;li>&lt;strong>Integration Testing:&lt;/strong> With a local Kubernetes cluster, you can easily perform integration tests for your applications without affecting a production environment. This can be especially useful for testing how your applications interact with Kubernetes features like networking, storage, and security.&lt;/li>
+&lt;/ul>
+&lt;h2 id="implementation">Implementation&lt;/h2>
+&lt;h3 id="cloning-the-repository">Cloning the repository&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/eazytraining/kubernetes-certification-stack.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> kubernetes-certification-stack
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="vagrant">Vagrant&lt;/h3>
+&lt;h4 id="starting-vagrant-environment">Starting Vagrant Environment&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vagrant up
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="troubleshooting-tips">Troubleshooting tips&lt;/h5>
+&lt;ul>
+&lt;li>For best results, use these scripts with a stable internet connection.&lt;/li>
+&lt;li>Even if it appears that the process is stalled, avoid canceling it.&lt;/li>
+&lt;li>If the process is canceled or interrupted, delete the virtual machines and rerun the Vagrantfile.&lt;/li>
+&lt;li>If you encounter the IP address configuration error depicted in the image below, create a new file at &lt;code>/etc/vbox/networks.conf&lt;/code> and add the following lines to it:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">* 10.0.0.0/8 192.168.0.0/16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">* 2001::/64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error.png"
+width="811"
+height="208"
+srcset="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error_hude566a48c076cda5ecd4e66188b3e862_10342_480x0_resize_box_3.png 480w, https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/ip-error_hude566a48c076cda5ecd4e66188b3e862_10342_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="IP-configuration-error"
+class="gallery-image"
+data-flex-grow="389"
+data-flex-basis="935px"
+>&lt;/p>
+&lt;h4 id="ssh-into-vagrant-master-node">SSH into Vagrant Master Node&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vagrant ssh master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="check-kubernetes-nodes-status">Check Kubernetes Nodes Status&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo kubectl get nodes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes.webp"
+width="1920"
+height="1080"
+srcset="https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes_hufa60634cf9048f57efdf3bcfb24a8dd3_88736_480x0_resize_q75_h2_box_2.webp 480w, https://m-dhia.github.io/p/kubernete-vagrant-virtualbox/Pictures/check-nodes_hufa60634cf9048f57efdf3bcfb24a8dd3_88736_1024x0_resize_q75_h2_box_2.webp 1024w"
+loading="lazy"
+alt="Checking-nodes"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;h2 id="code-explanation">Code Explanation&lt;/h2>
+&lt;h3 id="vagrantfile">Vagrantfile&lt;/h3>
+&lt;p>This Vagrantfile sets up a multi-node Kubernetes cluster with one master node and one worker node. Each node is configured with a base box (&lt;em>geerlingguy/centos7&lt;/em>), a static IP address, hostname, memory, CPU, and provisioned with a shell script for installing Kubernetes.&lt;/p>
+&lt;h4 id="vagrant-configuration-version-and-block">Vagrant Configuration Version and Block&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="no">Vagrant&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">configure&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The &lt;code>Vagrant.configure&lt;/code> method specifies the Vagrant configuration version.&lt;/p>
+&lt;h4 id="master-node-configuration">Master Node Configuration&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">define&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">master&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">box&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;geerlingguy/centos7&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="s2">&amp;#34;private_network&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">type&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;static&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">ip&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hostname&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provider&lt;/span> &lt;span class="s2">&amp;#34;virtualbox&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">memory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">master&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provision&lt;/span> &lt;span class="ss">:shell&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">shell&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;install_kubernetes.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>The &lt;code>config.vm.define&lt;/code> block defines a virtual machine named &amp;ldquo;master&amp;rdquo; with specific configurations.&lt;/li>
+&lt;li>It specifies the base box to use (&lt;em>geerlingguy/centos7&lt;/em>), sets up a private static IP address (192.168.99.10), and assigns the hostname &amp;ldquo;master&amp;rdquo;.&lt;/li>
+&lt;li>The &lt;code>config.vm.provider&lt;/code> block configures the virtual machine provider (in this case, VirtualBox) settings such as name, memory (2048 MB), and CPUs (2).&lt;/li>
+&lt;li>The &lt;code>config.vm.provision&lt;/code> block specifies provisioning using a shell script (&lt;code>install_kubernetes.sh&lt;/code>) with arguments &amp;ldquo;master&amp;rdquo; and &amp;ldquo;192.168.99.10&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;h4 id="worker-node-configuration-loop">Worker Node Configuration Loop&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">workers&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ram_worker&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cpu_worker&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">..&lt;/span>&lt;span class="n">workers&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">each&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">define&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">worker&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">box&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;geerlingguy/centos7&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="s2">&amp;#34;private_network&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">type&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;static&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ss">ip&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.1&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hostname&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provider&lt;/span> &lt;span class="s2">&amp;#34;virtualbox&amp;#34;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;worker&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">memory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ram_worker&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">v&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cpu_worker&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">worker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">provision&lt;/span> &lt;span class="ss">:shell&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">shell&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;install_kubernetes.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shell&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;node&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;192.168.99.10&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block sets up a loop to define worker nodes based on the &lt;code>workers&lt;/code>, &lt;code>ram_worker&lt;/code>, and &lt;code>cpu_worker&lt;/code> variables.&lt;/li>
+&lt;li>Inside the loop, each worker node is defined with similar configurations as the master node, except for the specific IP address, hostname, and name.&lt;/li>
+&lt;/ul>
+&lt;h3 id="install_kubernetessh">install_kubernetes.sh&lt;/h3>
+&lt;p>This script automates the setup process for a Kubernetes environment using Ansible, including installing necessary packages, and executing Ansible playbooks based on the type of node (master or worker). It also provides informative messages about the setup process and the IP address to be used for the stack.&lt;/p>
+&lt;h4 id="updating-and-installing-packages">Updating and Installing Packages&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>yum -y update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install epel-release
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>The script starts with the shebang line &lt;code>#!/bin/bash&lt;/code> to indicate that it should be executed by the Bash shell.&lt;/li>
+&lt;li>It then updates the system (&lt;code>yum -y update&lt;/code>) and installs the epel-release package, which provides additional packages for CentOS/RHEL.&lt;/li>
+&lt;/ul>
+&lt;h4 id="installing-ansible-and-git">Installing Ansible and Git&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># install ansible&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install ansible
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># retrieve ansible code&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum -y install git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This part installs Ansible (&lt;code>yum -y install ansible&lt;/code>) and Git (&lt;code>yum -y install git&lt;/code>) on the system, which are used for configuration management and version control, respectively.&lt;/li>
+&lt;/ul>
+&lt;h4 id="ansible-playbook-execution">Ansible Playbook Execution&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">KUBERNETES_VERSION&lt;/span>&lt;span class="o">=&lt;/span>1.28.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ansible-galaxy install -r roles/requirements.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="nv">$1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;master&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This part sets the variable &lt;code>KUBERNETES_VERSION&lt;/code> to &lt;code>1.28.1&lt;/code> and installs Ansible roles defined in &lt;code>roles/requirements.yml&lt;/code> using &lt;code>ansible-galaxy install -r roles/requirements.yml&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>The &lt;code>ansible&lt;/code> command runs Ansible playbooks, which are YAML files with tasks for remote hosts, while &lt;code>ansible-galaxy&lt;/code> allows users to search, install, and manage roles from the Ansible Galaxy community or their own private repositories.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>It then checks the value of the first argument passed to the script (&lt;code>$1&lt;/code>). If it is equal to &amp;ldquo;master&amp;rdquo;, it executes an Ansible playbook for setting up a Kubernetes master node. Otherwise, it executes an Ansible playbook for setting up a worker node.&lt;/li>
+&lt;/ul>
+&lt;h4 id="final-steps-and-outputs">Final Steps and Outputs&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;For this Stack, you will use &lt;/span>&lt;span class="k">$(&lt;/span>ip -f inet addr show enp0s8 &lt;span class="p">|&lt;/span> sed -En -e &lt;span class="s1">&amp;#39;s/.*inet ([0-9.]+).*/\1/p&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>&lt;span class="s2"> IP Address&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Depending on whether the node is a master or worker, the script executes different steps related to Kubernetes setup.&lt;/li>
+&lt;li>Finally, it outputs a message indicating the IP address to be used for the stack, based on the network interface &lt;code>enp0s8&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="rolerequirementsyml">role/requirements.yml&lt;/h3>
+&lt;p>This YAML file define the dependencies or roles required for setting up a Kubernetes environment using Ansible. Each role is specified with its source (src) and version (version). When this file is used with Ansible, it instructs Ansible to download and install these roles from the specified sources (e.g., Ansible Galaxy) before executing the main playbook that uses these roles.&lt;/p>
+&lt;h4 id="install-a-role-for-pip">Install a Role for Pip&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.pip&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;2.2.0&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.pip&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The &lt;code>src&lt;/code> key specifies the source of the role (geerlingguy.pip).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;2.2.0&amp;rdquo;).&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-a-role-for-pip-1">Install a Role for Pip&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.containerd&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;1.3.1&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.containerd&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The src key specifies the source of the role (&lt;em>geerlingguy.containerd&lt;/em>).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;1.3.1&amp;rdquo;).&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-kubernetes">Install Kubernetes&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">- &lt;span class="nt">src&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">geerlingguy.kubernetes&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;7.1.2&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This block specifies the installation of the &lt;code>geerlingguy.kubernetes&lt;/code> role from Ansible Galaxy.&lt;/li>
+&lt;li>The &lt;code>src&lt;/code> key specifies the source of the role (geerlingguy.kubernetes).&lt;/li>
+&lt;li>The &lt;code>version&lt;/code> key specifies the version of the role to install (in this case, version &amp;ldquo;7.1.2&amp;rdquo;).&lt;/li>
+&lt;/ul></description></item><item><title>The five nines concept</title><link>https://m-dhia.github.io/p/five-nines-concept/</link><pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/p/five-nines-concept/</guid><description>&lt;img src="https://m-dhia.github.io/p/five-nines-concept/cover.webp" alt="Featured image of post The five nines concept" />&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="what-does-the-five-nines-mean">What Does the Five Nines Mean?&lt;/h3>
+&lt;p>Five nines signifies a system or service availability of 99.999%, with less than 5.26 minutes of downtime annually, whether planned or unplanned. Maintaining such high availability involves:&lt;/p>
+&lt;ul>
+&lt;li>Eliminate single points of failure&lt;/li>
+&lt;li>Design for reliability&lt;/li>
+&lt;li>Detect failures as they occur&lt;/li>
+&lt;/ul>
+&lt;p>However, achieving and sustaining this level of availability can be costly and resource-intensive. It often requires additional hardware purchases, leading to increased complexity in system configuration and higher risks of component failures.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>Availability&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Downtime per Year&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>99%&lt;/td>
+&lt;td>87 hours 36 mins&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>99.5%&lt;/td>
+&lt;td>43 hours 48 mins&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>99.95%&lt;/td>
+&lt;td>4 hours 23 mins&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>99.99%&lt;/td>
+&lt;td>53 mins&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>99.999%&lt;/td>
+&lt;td>5 mins&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="environments-that-require-five-nines">Environments that Require Five Nines&lt;/h3>
+&lt;p>While sustaining high availability can be costly, certain industries require &amp;ldquo;five nines&amp;rdquo; reliability:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Finance:&lt;/strong> For continuous trading, compliance, and customer trust.&lt;/li>
+&lt;li>&lt;strong>Healthcare:&lt;/strong> To provide uninterrupted patient care.&lt;/li>
+&lt;li>&lt;strong>Public Safety:&lt;/strong> To ensure security and services.&lt;/li>
+&lt;li>&lt;strong>Retail:&lt;/strong> For efficient supply chains and customer satisfaction.&lt;/li>
+&lt;li>&lt;strong>News Media:&lt;/strong> To deliver real-time information to the public.&lt;/li>
+&lt;/ul>
+&lt;h2 id="availability">Availability&lt;/h2>
+&lt;h3 id="threats-to-availability">Threats to Availability&lt;/h3>
+&lt;p>The following threats pose a high risk to data and information availability:&lt;/p>
+&lt;ul>
+&lt;li>Unauthorized access to the primary database&lt;/li>
+&lt;li>Successful DoS attack&lt;/li>
+&lt;li>Significant loss of confidential data&lt;/li>
+&lt;li>Outage of mission-critical application&lt;/li>
+&lt;li>Compromise of Admin or root user&lt;/li>
+&lt;li>Detection of cross-site scripting or illegal file server share&lt;/li>
+&lt;li>Website defacement affecting public relations&lt;/li>
+&lt;li>Severe weather like hurricanes or tornadoes&lt;/li>
+&lt;li>Catastrophic events like terrorist attacks or building fires&lt;/li>
+&lt;li>Long-term utility/service provider outage&lt;/li>
+&lt;li>Water damage from flooding or sprinkler failure&lt;/li>
+&lt;/ul>
+&lt;h3 id="designing-high-availability-system">Designing High Availability System&lt;/h3>
+&lt;p>High availability incorporates three major principles to achieve the goal of uninterrupted access to data and services:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Elimination or reduction of single-points of failure&lt;/strong>:&lt;/li>
+&lt;/ol>
+&lt;p>It&amp;rsquo;s crucial to address single points of failure, which can be central routers or switches, network services, or key IT staff. Any loss in these areas can severely disrupt the entire system. To mitigate this risk, it&amp;rsquo;s important to implement processes, resources, and components that reduce these single points of failure. One effective strategy is to use high availability clusters, where a group of interconnected servers shares access to the same storage and network configurations. This setup allows all servers to handle services simultaneously, appearing as a single, resilient system. If one server fails, the others seamlessly continue processing without interruption.&lt;/p>
+&lt;ol start="2">
+&lt;li>&lt;strong>System Resiliency&lt;/strong>:&lt;/li>
+&lt;/ol>
+&lt;p>System resiliency means maintaining data and operations even during attacks or disruptions. It involves redundant power and processing systems, so if one fails, the other can seamlessly take over without interruption. Resilience goes beyond just securing devices; it ensures that data and services remain available even under attack.&lt;/p>
+&lt;ol start="3">
+&lt;li>&lt;strong>Fault Tolerance&lt;/strong>:&lt;/li>
+&lt;/ol>
+&lt;p>Fault tolerance allows a system to keep working even if one or more components fail. Data mirroring is an example, where a mirrored system provides uninterrupted service by supplying requested data if a fault occurs, like in a disk controller, without the user noticing any disruption.&lt;/p>
+&lt;h2 id="measures-to-improve-availability">Measures to improve Availability&lt;/h2>
+&lt;h3 id="asset-management">Asset management&lt;/h3>
+&lt;h4 id="asset-identification">Asset Identification&lt;/h4>
+&lt;p>Asset management, including a comprehensive inventory of hardware and software, is essential for determining configuration parameters. This inventory should cover all components susceptible to security risks:&lt;/p>
+&lt;ul>
+&lt;li>Hardware systems&lt;/li>
+&lt;li>Operating systems&lt;/li>
+&lt;li>Hardware network devices&lt;/li>
+&lt;li>Network device operating systems&lt;/li>
+&lt;li>Software applications&lt;/li>
+&lt;li>Firmware&lt;/li>
+&lt;li>Language runtime environments&lt;/li>
+&lt;li>Individual libraries&lt;/li>
+&lt;/ul>
+&lt;p>Organizations can opt for automated solutions to track assets. Administrators should promptly investigate any configuration changes to ensure they are up-to-date and authorized.&lt;/p>
+&lt;h4 id="asset-classification">Asset Classification&lt;/h4>
+&lt;p>Asset classification groups an organization&amp;rsquo;s resources based on shared traits. It should be applied to documents, data records, files, and disks. Critical informations requires the highest protection, possibly needing special handling.
+An organization can use a labeling system based on information value, sensitivity, and criticality.
+To identify and classify assets:&lt;/p>
+&lt;ol>
+&lt;li>Define asset categories.&lt;/li>
+&lt;li>Assign owners to all assets and software.&lt;/li>
+&lt;li>Set classification criteria.&lt;/li>
+&lt;li>Implement the classification system.&lt;/li>
+&lt;/ol>
+&lt;h4 id="asset-standardization">Asset Standardization&lt;/h4>
+&lt;p>Asset management oversees the lifecycle and inventory of technology assets like devices and software. In an IT asset management system, organizations define acceptable IT assets to align with their goals, reducing asset diversity. For instance, only compliant applications are installed. Eliminating non-compliant applications enhances security.
+Asset standards specify the hardware and software products an organization supports. Quick action during failures ensures access and security. Without standardized hardware, personnel may struggle to find replacements, requiring more expertise and increasing maintenance costs in non-standard environments.&lt;/p>
+&lt;h4 id="risk-analysis">Risk Analysis&lt;/h4>
+&lt;p>Risk analysis evaluates threats from natural and human-caused events to an organization&amp;rsquo;s assets.
+Asset identification aids in deciding which assets to safeguard. Risk analysis has four key goals:&lt;/p>
+&lt;ul>
+&lt;li>Identify assets and their value&lt;/li>
+&lt;li>Identify vulnerabilities and threats&lt;/li>
+&lt;li>Quantify the probability and impact of the identified threats&lt;/li>
+&lt;li>Balance the impact of the threat against the cost of the countermeasure&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>There are two approaches to risk analysis:&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Quantitative Risk Analysis:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>It is a method that assigns numerical values to elements of the risk analysis process. It involves calculating the potential financial impact of a risk by considering factors like asset value, exposure factor (EF), annualized rate of occurrence (ARO), and annual loss expectancy (ALE). This approach provides management with concrete data to make informed decisions about risk mitigation and resource allocation.&lt;/p>
+&lt;ol start="2">
+&lt;li>&lt;strong>Qualitative Risk Analysis:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>It is a method that relies on subjective assessments and scenarios to evaluate risks. It involves a team evaluating each threat based on its likelihood and impact, usually plotted on a table. The results are used as a guide for decision-making, often focusing on threats within a specified risk zone. Unlike quantitative analysis, the numerical values in qualitative analysis are not directly proportional and are more subjective in nature.&lt;/p>
+&lt;h4 id="mitigation">Mitigation&lt;/h4>
+&lt;p>Mitigation aims to lessen the impact or likelihood of a loss. Technical controls like authentication systems, file permissions, and firewalls are examples. It&amp;rsquo;s crucial to balance the potential negative impact of mitigation measures with the benefits of risk reduction.
+There are four common ways to reduce risk:&lt;/p>
+&lt;ul>
+&lt;li>Accept the risk and periodically re-assess&lt;/li>
+&lt;li>Reduce the risk by implementing controls&lt;/li>
+&lt;li>Avoid the risk by totally changing the approach&lt;/li>
+&lt;li>Transfer the risk to a third party&lt;/li>
+&lt;/ul>
+&lt;p>In the short term, one strategy is to accept the risk and create contingency plans. Risk acceptance is a common practice for individuals and organizations. Modern methods reduce risk by incremental software development and regular updates to address vulnerabilities.
+Risk transfer includes outsourcing, purchasing insurance, or maintenance contracts. Hiring specialists for critical tasks can reduce risk effectively. A good risk mitigation plan can include two or more strategies.&lt;/p>
+&lt;h3 id="defense-in-depth">Defense in Depth&lt;/h3>
+&lt;p>Defense in depth, while not foolproof, helps organizations stay ahead of cyber threats by minimizing risk. Relying on a single defense leaves data vulnerable, so multiple layers of protection are crucial.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">Term&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">Layering&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">Limiting&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">Diversity&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">Obscurity&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">Simplicity&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="layering">Layering&lt;/h4>
+&lt;p>A layered approach offers comprehensive security, as attackers must breach each layer, which becomes increasingly complex. Layering involves coordinating multiple defenses, like storing sensitive data in a server within a secured facility.&lt;/p>
+&lt;h4 id="limiting">Limiting&lt;/h4>
+&lt;p>Limiting data access minimizes threats. Access should be restricted to what&amp;rsquo;s necessary for each user&amp;rsquo;s role. For instance, the marketing team doesn&amp;rsquo;t need payroll access.
+Technology like file permissions helps, but procedure measures are also vital. Employees should be barred from taking sensitive documents off-site.&lt;/p>
+&lt;h4 id="diversity">Diversity&lt;/h4>
+&lt;p>For effective protection, layers of security must vary. If all layers are the same, breaching one means breaching all. Diverse layers make it harder for attackers. Each layer should use different techniques. Even if one layer is breached, the entire system remains secure.
+To achieve diversity, organizations can use products from different companies for multifactor authentication. For instance, a server with sensitive data might require a swipe card from one company and biometric authentication from another.&lt;/p>
+&lt;h4 id="obscurity">Obscurity&lt;/h4>
+&lt;p>Obscuring information safeguards data. Organizations should avoid disclosing details like server operating system versions or equipment types that cybercriminals could exploit. Error messages should also be generic to prevent revealing vulnerabilities. This concealment makes it harder for attackers to target a system.&lt;/p>
+&lt;h4 id="simplicity">Simplicity&lt;/h4>
+&lt;p>Complexity doesn&amp;rsquo;t always ensure security. Overly complex systems can be hard to manage and may even increase vulnerability. If employees struggle to configure them correctly, they can become easy targets for cybercriminals. A good security solution is simple internally but presents a complex front to deter attacks.&lt;/p>
+&lt;h3 id="redundancy">Redundancy&lt;/h3>
+&lt;h4 id="single-points-of-failure">Single Points of Failure&lt;/h4>
+&lt;p>A single point of failure is a crucial part of an organization&amp;rsquo;s operations that, if it fails, can halt other operations dependent on it. This can be hardware, a process, data, or a utility. Single points of failure are weak links that disrupt operations. The solution is to modify the critical operation to remove reliance on a single element or to introduce redundant components that can take over if a point fails.&lt;/p>
+&lt;h4 id="n1-redundancy">N+1 Redundancy&lt;/h4>
+&lt;p>N+1 redundancy is a system design principle where critical components (N) have at least one backup component (+1) to ensure system availability in case of failure. For example, in a data center, N+1 redundancy means the system can continue operating if one of its components, such as servers, power supplies, switches, or routers, fails. The +1 represents the additional backup component or system ready to take over if needed. While N+1 redundancy provides backup components, it does not create a fully redundant system.&lt;/p>
+&lt;h4 id="raid">RAID&lt;/h4>
+&lt;p>RAID (Redundant Array of Independent Disks) combines multiple physical hard drives into a single logical unit for data redundancy and performance improvement. It spreads data across drives, so if one disk fails, data can be recovered from the others. RAID also speeds up data retrieval by using multiple drives. There are hardware-based and software-based RAID solutions, with the former requiring a specialized hardware controller. RAID uses different methods to store data across disks:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Parity&lt;/strong>: Detects data errors.&lt;/li>
+&lt;li>&lt;strong>Striping&lt;/strong>: Writes data across multiple drives.&lt;/li>
+&lt;li>&lt;strong>Mirroring&lt;/strong>: Stores duplicate data on a second drive.&lt;/li>
+&lt;/ul>
+&lt;h4 id="spanning-tree">Spanning Tree&lt;/h4>
+&lt;p>Spanning Tree Protocol (STP) is a network protocol that prevents loops in a network&amp;rsquo;s topology when switches are interconnected via multiple paths. Its primary function is to ensure that redundant physical links between switches are loop-free, allowing only one logical path between all network destinations. STP achieves this by intentionally blocking redundant paths that could cause loops, while still maintaining them for redundancy. When a network cable or switch fails, STP recalculates the paths and unblocks the necessary ports to activate the redundant path, ensuring network availability.&lt;/p>
+&lt;h4 id="router-redundancy">Router Redundancy&lt;/h4>
+&lt;p>The default gateway, usually a router, provides access to the network or the Internet. Relying on a single router as the default gateway poses a single point of failure. To mitigate this, organizations can set up a standby router. In a redundancy setup, routers use a protocol to determine which one forwards traffic. Each router has a physical and a virtual IP address; end devices use the virtual IP as the default gateway. Routers exchange periodic messages using their physical IPs to check availability. If the standby router stops receiving these messages from the forwarding router, it takes over. This ability to recover from gateway failures is called first-hop redundancy.&lt;/p>
+&lt;p>The list below outlines router redundancy options based on the communication protocol between network devices.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Hot Standby Router Protocol (HSRP):&lt;/strong> HSRP ensures high network availability by providing first-hop routing redundancy. A group of routers uses HSRP to select an active device and a standby device. The active device routes packets, while the standby device takes over if the active one fails.&lt;/li>
+&lt;li>&lt;strong>Virtual Router Redundancy Protocol (VRRP):&lt;/strong> VRRP routers run the VRRP protocol with one or more routers on a LAN. In this setup, one router is elected as the virtual router master, and the others act as backups in case the master fails.&lt;/li>
+&lt;li>&lt;strong>Gateway Load Balancing Protocol (GLBP):&lt;/strong> GLBP protects data traffic from a failed router or circuit like HSRP and VRRP do, while also enabling load balancing between a group of redundant routers.&lt;/li>
+&lt;/ul>
+&lt;h4 id="location-redundancy">Location Redundancy&lt;/h4>
+&lt;p>An organization may need to consider location redundancy depending on its needs. The following outlines three forms of location redundancy.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Synchronous:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Real-time synchronization.&lt;/li>
+&lt;li>Requires high bandwidth.&lt;/li>
+&lt;li>Locations must be close to reduce latency.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Asynchronous Replication:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Not real-time synchronized but close.&lt;/li>
+&lt;li>Requires less bandwidth.&lt;/li>
+&lt;li>Sites can be further apart due to reduced latency concerns.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Point-in-time Replication:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Periodic updates for backup data.&lt;/li>
+&lt;li>Most bandwidth conservative, no constant connection needed.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="system-reliance">System Reliance&lt;/h3>
+&lt;h4 id="resilient-design">Resilient Design&lt;/h4>
+&lt;p>Resiliency involves methods and configurations to tolerate system or network failures. For instance, redundant links in a network using STP provide alternate paths in case of link failures, but switchover may not be immediate without optimal configuration.
+Routing protocols also enhance resiliency, with fine-tuning improving switchover times. Testing non-default settings in a controlled environment can help optimize network recovery.
+Resilient design goes beyond redundancy, requiring an understanding of business needs to create a truly resilient network.&lt;/p>
+&lt;h4 id="application-resilience">Application Resilience&lt;/h4>
+&lt;p>Application resilience refers to an application&amp;rsquo;s ability to function despite component issues. Downtime can result from application errors, infrastructure failures, or planned maintenance. Achieving high availability in applications involves balancing infrastructure costs with potential business losses due to failures. The complexity and cost of solutions for application resilience increase with higher availability factors.&lt;/p>
+&lt;h4 id="ios-resilience">IOS Resilience&lt;/h4>
+&lt;p>The Interwork Operating System (IOS) for Cisco routers and switches includes a resilient configuration feature for faster recovery from malicious or unintentional data loss. It maintains a secure working copy of the IOS image file and running configuration, preventing their removal. These secure files, known as the primary bootset, ensure system integrity.&lt;/p>
+&lt;blockquote>
+&lt;p>The command underneath is used to protect the Cisco IOS image file from unauthorized modifications:&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">secure boot-image
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="incident-response">Incident Response&lt;/h2>
+&lt;h3 id="incident-response-phases">Incident response phases&lt;/h3>
+&lt;h4 id="preparation">Preparation&lt;/h4>
+&lt;p>Incident response involves an organization&amp;rsquo;s procedures following an event outside the normal range, such as a data breach that exposes sensitive information to an untrusted environment. This breach can result from accidental or intentional acts. To address incidents, organizations need an incident response plan and a Computer Security Incident Response Team (CSIRT) to manage the response. The team performs the following functions:&lt;/p>
+&lt;ul>
+&lt;li>Maintains the incident response plan&lt;/li>
+&lt;li>Ensures its members are knowledgeable about the plan&lt;/li>
+&lt;li>Tests the plan&lt;/li>
+&lt;li>Gets management’s approval of the plan
+The CSIRT can be a formal team within the organization or an ad hoc one. It follows predefined steps to ensure a uniform approach and completeness. National CSIRTs handle incident response at a country level.&lt;/li>
+&lt;/ul>
+&lt;h4 id="detection-and-analysis">Detection and Analysis&lt;/h4>
+&lt;p>Detection begins when an incident is discovered. While organizations may invest in advanced detection systems, their effectiveness relies on administrators reviewing logs and monitoring alerts. Proper detection involves understanding the incident&amp;rsquo;s cause, the data and systems affected, and promptly notifying senior management and relevant managers for remediation.
+Detection and analysis includes the following:&lt;/p>
+&lt;ul>
+&lt;li>Alerts and notifications&lt;/li>
+&lt;li>Monitoring and follow-up
+Incident analysis identifies the source, extent, impact, and details of a data breach. Depending on the situation, the organization may decide to bring in forensic experts for further investigation.&lt;/li>
+&lt;/ul>
+&lt;h4 id="containment-and-eradication-and-recovery">Containment and Eradication, and Recovery&lt;/h4>
+&lt;p>Containment involves immediate actions like disconnecting systems to stop information leaks. After identifying a breach, the organization must contain and eradicate it, which may require additional system downtime. Recovery involves resolving the breach and restoring systems to their pre-breach state.&lt;/p>
+&lt;h4 id="post-incident-follow-up">Post-Incident Follow-Up&lt;/h4>
+&lt;p>After returning to normal operations, the organization should investigate the incident by asking:&lt;/p>
+&lt;ul>
+&lt;li>What actions will prevent the incident from reoccurring?&lt;/li>
+&lt;li>What preventive measures need strengthening?&lt;/li>
+&lt;li>How can it improve system monitoring?&lt;/li>
+&lt;li>How can it minimize downtime during the containment, eradication, and recovery phases?&lt;/li>
+&lt;li>How can management minimize the impact to the business?
+Reviewing lessons learned can help the organization improve its incident response plan.&lt;/li>
+&lt;/ul>
+&lt;h3 id="incident-response-technologies">Incident response Technologies&lt;/h3>
+&lt;h4 id="network-admission-control">Network Admission Control&lt;/h4>
+&lt;p>Network Admission Control (NAC) ensures that only authorized users with compliant systems can access the network. It evaluates incoming devices against network policies, quarantines non-compliant systems, and manages their remediation. This can be achieved using existing network infrastructure and third-party software, or through a dedicated NAC appliance that controls access, evaluates compliance, and enforces security policies for all endpoints.
+Common NAC systems checks include:&lt;/p>
+&lt;ol>
+&lt;li>Updated virus detection&lt;/li>
+&lt;li>Operating systems patches and updates&lt;/li>
+&lt;li>Complex password enforcement&lt;/li>
+&lt;/ol>
+&lt;h4 id="intrusion-detection-systems">Intrusion Detection Systems&lt;/h4>
+&lt;p>Intrusion Detection Systems (IDSs) passively monitor network traffic by copying it for analysis . Working offline, it compares the captured traffic with known malicious signatures, similar to how antivirus software checks for viruses.
+Working offline means several things:&lt;/p>
+&lt;ul>
+&lt;li>IDS works passively&lt;/li>
+&lt;li>IDS device is physically positioned in the network so that traffic must be mirrored in order to reach it&lt;/li>
+&lt;li>Network traffic does not pass through the IDS unless it is mirrored
+In passive mode, an IDS monitors and reports on traffic without taking any action. This is known as operating in promiscuous mode.
+Operating with a copy of the traffic allows the IDS to monitor without affecting the packet flow, but it can&amp;rsquo;t stop single-packet attacks. IDS often needs assistance from routers and firewalls to respond to attacks.
+A more effective solution is to use an Intrusion Prevention System (IPS) that can detect and stop attacks in real time.&lt;/li>
+&lt;/ul>
+&lt;h4 id="intrusion-prevention-systems">Intrusion Prevention Systems&lt;/h4>
+&lt;p>An Intrusion Prevention System (IPS) operates in inline mode, meaning all traffic passes through it for analysis. It can immediately detect and address network issues, including sophisticated attacks, by analyzing packet contents and payloads. Unlike an Intrusion Detection System (IDS), an IPS does not allow malicious traffic to pass through. However, a misconfigured IPS can disrupt normal traffic flow.&lt;/p>
+&lt;h4 id="netflow-and-ipfix">NetFlow and IPFIX&lt;/h4>
+&lt;p>NetFlow is a Cisco technology that gathers packet statistics from routers and switches. It&amp;rsquo;s the standard for collecting network operational data. IP Flow Information Export (IPFIX) is based on NetFlow Version 9 and is used to export traffic flow information from routers to data collection devices. This data helps optimize network performance when used by network managers and applications that support the protocol.
+Applications that support IPFIX can display statistics from routers that use the standard. Collecting, storing, and analyzing data from IPFIX-supported devices offers several benefits:&lt;/p>
+&lt;ul>
+&lt;li>Secures the network against internal and external threats&lt;/li>
+&lt;li>Troubleshoots network failures quickly and precisely&lt;/li>
+&lt;li>Analyzes network flows for capacity planning&lt;/li>
+&lt;/ul>
+&lt;h4 id="advanced-threat-intelligence">Advanced Threat Intelligence&lt;/h4>
+&lt;p>Advanced threat intelligence can help organizations detect cyberattacks at various stages, sometimes even before they occur, with the right information.
+Organizations can detect attack indicators in their logs and system reports for the following security alerts:&lt;/p>
+&lt;ul>
+&lt;li>Account lockouts&lt;/li>
+&lt;li>All database events&lt;/li>
+&lt;li>Asset creation and deletion&lt;/li>
+&lt;li>Configuration modification to systems
+Advanced threat intelligence, consisting of event or profile data, enhances security monitoring and response. Understanding malware tactics is crucial as cybercriminals become more sophisticated. Improved visibility into attack methods allows organizations to respond faster to incidents.&lt;/li>
+&lt;/ul>
+&lt;h2 id="disaster-recovery">Disaster Recovery&lt;/h2>
+&lt;h3 id="disaster-recovery-planning">Disaster Recovery Planning&lt;/h3>
+&lt;h4 id="types-of-disasters">Types of Disasters&lt;/h4>
+&lt;p>Maintaining organizational function during a disaster is critical. Disasters encompass natural or human-caused events that damage assets and hinder operations.&lt;/p>
+&lt;h5 id="natural-disasters">Natural Disasters&lt;/h5>
+&lt;p>Natural disasters vary by location and can be challenging to predict. They generally fall into the following categories:&lt;/p>
+&lt;ul>
+&lt;li>Geological disasters: earthquakes, landslides, volcanoes, tsunamis&lt;/li>
+&lt;li>Meteorological disasters: hurricanes, tornadoes, snow storms, lightning, hail&lt;/li>
+&lt;li>Health disasters: widespread illnesses, quarantines, pandemics&lt;/li>
+&lt;li>Miscellaneous disasters: fires, floods, solar storms, avalanches&lt;/li>
+&lt;/ul>
+&lt;h5 id="human-caused-disasters">Human-caused Disasters&lt;/h5>
+&lt;p>Human-caused disasters involve people or organizations and fall into the following categories:&lt;/p>
+&lt;ul>
+&lt;li>Labor events: strikes, walkouts, slowdowns&lt;/li>
+&lt;li>Social-political events: vandalism, blockades, protests, sabotage, terrorism, war&lt;/li>
+&lt;li>Materials events: hazardous spills, fires&lt;/li>
+&lt;li>Utilities disruptions: power failures, communication outages, fuel shortages, radioactive fallout&lt;/li>
+&lt;/ul>
+&lt;h4 id="disaster-recovery-plan">Disaster Recovery Plan&lt;/h4>
+&lt;p>During an ongoing disaster, the organization implements its Disaster Recovery Plan (DRP) to swiftly restore critical systems, including assessing, salvaging, repairing, and restoring damaged facilities and assets.
+To create the DRP, answer the following questions:&lt;/p>
+&lt;ul>
+&lt;li>Who is responsible for this process?&lt;/li>
+&lt;li>What does the individual need to perform the process?&lt;/li>
+&lt;li>Where does the individual perform this process?&lt;/li>
+&lt;li>What is the process?&lt;/li>
+&lt;li>Why is the process critical?
+A DRP must prioritize critical processes within the organization. When recovering, the organization focuses on restoring its mission-critical systems first.&lt;/li>
+&lt;/ul>
+&lt;h4 id="implementing-disaster-recovery-controls">Implementing Disaster Recovery Controls&lt;/h4>
+&lt;p>Disaster recovery controls reduce the impact of a disaster, ensuring resources and business processes can quickly resume operations.
+There are three types of IT disaster recovery controls:&lt;/p>
+&lt;ul>
+&lt;li>Preventative measures prevent disasters by identifying risks.&lt;/li>
+&lt;li>Detective measures discover unwanted events, uncovering new threats.&lt;/li>
+&lt;li>Corrective measures restore systems after disasters or events.&lt;/li>
+&lt;/ul>
+&lt;h3 id="business-continuity-planning">Business Continuity Planning&lt;/h3>
+&lt;h4 id="need-for-business-continuity">Need for Business Continuity&lt;/h4>
+&lt;p>Business continuity is crucial in computer security. While companies strive to prevent disasters and data loss, it&amp;rsquo;s impossible to predict every scenario. Having plans for business continuity is vital. This plan, broader than a DRP, involves relocating critical systems while the original facility is repaired. Personnel adapt to alternative methods until normal operations resume.
+Availability ensures that resources necessary for the organization remain accessible to personnel and systems.&lt;/p>
+&lt;h4 id="business-continuity-considerations">Business Continuity Considerations&lt;/h4>
+&lt;p>Business continuity controls are more than data backups and redundant hardware. They also rely on properly trained employees to configure and operate systems effectively. Data can be useless until it provides information. An organization should look at the following:&lt;/p>
+&lt;ul>
+&lt;li>Getting the right people to the right places&lt;/li>
+&lt;li>Documenting configurations&lt;/li>
+&lt;li>Establishing alternate communications channels for both voice and data&lt;/li>
+&lt;li>Providing power&lt;/li>
+&lt;li>Identifying all dependencies for applications and processes so that they are properly understood&lt;/li>
+&lt;li>Understanding how to carry out automated tasks manually&lt;/li>
+&lt;/ul>
+&lt;h4 id="business-continuity-best-practices">Business Continuity Best Practices&lt;/h4>
+&lt;p>The National Institute of Standards and Technology (NIST) developed the following best practices:&lt;/p>
+&lt;ol>
+&lt;li>Write a policy that provides guidance for developing the business continuity plan and assigns roles for task execution.&lt;/li>
+&lt;li>Identify critical systems and processes and prioritize them based on necessity.&lt;/li>
+&lt;li>Identify vulnerabilities, threats, and calculate risks.&lt;/li>
+&lt;li>Identify and implement controls and countermeasures to reduce risk.&lt;/li>
+&lt;li>Devise methods to quickly restore critical systems.&lt;/li>
+&lt;li>Write procedures to maintain organizational functionality during chaos.&lt;/li>
+&lt;li>Test the plan.&lt;/li>
+&lt;li>Regularly update the plan.&lt;/li>
+&lt;/ol></description></item><item><title>RSA algorithm</title><link>https://m-dhia.github.io/p/rsa-algorithm/</link><pubDate>Sun, 24 Dec 2023 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/p/rsa-algorithm/</guid><description>&lt;h1 id="understanding-the-rsa-algorithm">Understanding the RSA Algorithm&lt;/h1>
+&lt;p>The RSA algorithm is a widely used encryption algorithm that serve to secure data transmission over the internet. It is named after its inventors, Ron Rivest, Adi Shamir, and Leonard Adleman, who introduced it in 1977. This algorithm is based on the mathematical properties of large prime numbers and their factorization, which makes it computationally secure.&lt;/p>
+&lt;h2 id="how-rsa-works">How RSA Works&lt;/h2>
+&lt;p>RSA is an asymmetric algorithm. It uses a pair of keys – a public key and a private key – to encrypt and decrypt data. The public key is shared with anons who wants to send encrypted data to the owner of the key, while the private key is kept secret and used by the key owner to decrypt the received data.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Key Generation&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Choose two distinct prime numbers, p and q.&lt;/li>
+&lt;li>Calculate n = p * q.&lt;/li>
+&lt;li>Calculate φ(n) = (p - 1) * (q - 1).&lt;/li>
+&lt;li>Choose an integer e such that 1 &amp;lt; e &amp;lt; φ(n) and gcd(e, φ(n)) = 1. This is the public exponent.&lt;/li>
+&lt;li>Calculate d = e^(-1) mod φ(n). This is the private exponent.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Encryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Convert the plaintext message into an integer m, where 0 &amp;lt; m &amp;lt; n.&lt;/li>
+&lt;li>Compute the ciphertext c = m^e mod n.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Decryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>To decrypt the ciphertext c, compute the plaintext message m = c^d mod n.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="example">Example&lt;/h2>
+&lt;p>Let&amp;rsquo;s go through a simple example to illustrate how RSA works:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Key Generation&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Choose p = 61 and q = 53.&lt;/li>
+&lt;li>Calculate n = 61 * 53 = 3233.&lt;/li>
+&lt;li>Calculate φ(n) = (61 - 1) * (53 - 1) = 3120.&lt;/li>
+&lt;li>Choose e = 17.&lt;/li>
+&lt;li>Calculate d = 2753, since 17 * d ≡ 1 (mod 3120).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Encryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Assume we want to encrypt the message &amp;ldquo;HELLO&amp;rdquo;.&lt;/li>
+&lt;li>Convert &amp;ldquo;HELLO&amp;rdquo; to its ASCII representation: H=72, E=69, L=76, L=76, O=79.&lt;/li>
+&lt;li>Combine the ASCII values: 7269767679.&lt;/li>
+&lt;li>Encrypt each block: 7269767679^17 mod 3233 = 2409 2754 1253 1253 1968.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Decryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>To decrypt the ciphertext, we use the private key (d, n).&lt;/li>
+&lt;li>Decrypt each block: 2409^2753 mod 3233 = 72 (H), 2754^2753 mod 3233 = 69 (E), 1253^2753 mod 3233 = 76 (L), 1253^2753 mod 3233 = 76 (L), 1968^2753 mod 3233 = 79 (O).&lt;/li>
+&lt;li>Convert back to ASCII: 72=H, 69=E, 76=L, 76=L, 79=O.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="using-rsa-in-linux">Using RSA in Linux&lt;/h2>
+&lt;p>In Linux, you can use the &lt;code>openssl&lt;/code> command-line tool to work with RSA encryption and decryption.&lt;/p>
+&lt;h3 id="generating-rsa-keys">Generating RSA Keys&lt;/h3>
+&lt;p>To generate an RSA key pair, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl genpkey -algorithm RSA -out private_key.pem -aes256
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command generates a new RSA private key and encrypts it with AES 256-bit encryption. You will be prompted to enter a passphrase to protect the private key.
+You can then extract the public key from the private key using the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl rsa -in private_key.pem -pubout -out public_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="encrypting-and-decrypting-data">Encrypting and Decrypting Data&lt;/h3>
+&lt;p>Once you have generated your RSA key pair, you can use them to encrypt and decrypt data.&lt;/p>
+&lt;h4 id="encryption">Encryption&lt;/h4>
+&lt;p>To encrypt a file using the public key, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl pkeyutl -encrypt -in plaintext.txt -out encrypted.txt -pubin -inkey public_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;ul>
+&lt;li>pubin: This option indicates that the input key specified with -inkey is a public key. This is necessary when using a public key for encryption.&lt;/li>
+&lt;li>inkey public_key.pem: This specifies the input file containing the public key (public_key.pem) that will be used for encryption.&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>This command encrypts the contents of plaintext.txt using the public key from public_key.pem and saves the encrypted data to encrypted.txt.&lt;/p>
+&lt;h4 id="decryption">Decryption&lt;/h4>
+&lt;p>To decrypt the encrypted file using the private key, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl pkeyutl -decrypt -in encrypted.txt -out decrypted.txt -inkey private_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command decrypts the contents of encrypted.txt using the private key from private_key.pem and saves the decrypted data to decrypted.txt.&lt;/p></description></item><item><title>Archives</title><link>https://m-dhia.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/archives/</guid><description/></item><item><title>Links</title><link>https://m-dhia.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/links/</guid><description>&lt;h2 id="my-accounts">My Accounts&lt;/h2>
+&lt;!--
+- title: Stackoverflow
+description: Stack Overflow is a question and answer platform for professional and enthusiast programmers.
+website: https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/
+image: logo/stackoverflow.svg
+--></description></item><item><title>Resume</title><link>https://m-dhia.github.io/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/resume/</guid><description>&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;link rel="stylesheet" href="styles.css">
+&lt;/head>
+&lt;body>
+&lt;h1>Mohamed Dhia Aouina&lt;/h1>
+Hello, I am &lt;strong>Mohamed Dhia Aouina&lt;/strong> from ISET Kr. &lt;/br>
+An IT student with a strong passion for the field.&lt;/br>
+I'd describe myself as a fast learner, eager to take on any challenge.&lt;/br>
+&lt;div id="social-media" class="names">
+&lt;ul>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+&lt;/svg>: &lt;a href="tel:+21628287368">(+216) 28-287-368&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+&lt;path d="M3 7l9 6l9 -6" />
+&lt;/svg>: &lt;a href="mailto:mdhiaaouina@outlook.com" >mdhiaaouina@outlook.com&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+&lt;/svg>: &lt;a href="https://github.com/m-dhia" target="_blank">m-dhia&lt;/a>
+&lt;/li>
+&lt;li>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+&lt;path d="M8 11l0 5" />
+&lt;path d="M8 8l0 .01" />
+&lt;path d="M12 16l0 -5" />
+&lt;path d="M16 16v-3a2 2 0 0 0 -4 0" />
+&lt;/svg>: &lt;a href="https://www.linkedin.com/in/mohamed-dhia-aouina-68788a2b5/" target="_blank">Linkedin&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div id="flex-container" style="display: flex;">
+&lt;div style="flex: 1; padding-right: 10px;">
+&lt;!-- Left Column Content --> &lt;ul>
+&lt;li style="list-style-type: none;">
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M3 19l18 0" />
+&lt;path d="M5 6m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Skills
+&lt;/h3>
+&lt;details>
+&lt;summary>Operating Systems&lt;/summary>
+&lt;ul>
+&lt;p>Installation, administration, resource sharing, backup policies&lt;/p>
+&lt;li>
+&lt;strong>Linux&lt;/strong>: &lt;ul>
+&lt;li>Distros based on: &lt;em>Ubuntu&lt;/em>, &lt;em>Debian&lt;/em>, &lt;em>Arch&lt;/em>
+&lt;/li>
+&lt;li>Running Gnu/Linux as a main OS for 3 years&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;strong>Windows&lt;/strong>: &lt;ul>
+&lt;li>Windows &lt;em>7&lt;/em>, &lt;em>10&lt;/em>, &lt;em>11&lt;/em>
+&lt;/li>
+&lt;li>Windows Server &lt;em>2016&lt;/em>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Virtualization&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Platforms&lt;/strong>: VMware Workstation, Qemu, Oracle VirtualBox
+&lt;/li>
+&lt;li>
+&lt;strong>Managing&lt;/strong>: Vagrant
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Containerization&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Platforms&lt;/strong>: Docker, Podman
+&lt;/li>
+&lt;li>
+&lt;strong>Managing&lt;/strong>: Kubernetes
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Cloud&lt;/summary>
+&lt;ul>
+&lt;li>AWS&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Programming languages&lt;/summary>
+&lt;ul>
+&lt;li>Python&lt;/li>
+&lt;li>Java&lt;/li>
+&lt;li>JavaScript&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>DevOps tools&lt;/summary>
+&lt;ul>
+&lt;li>Ansible&lt;/li>
+&lt;li>Terraform&lt;/li>
+&lt;li>Git, Github, Gitlab&lt;/li>
+&lt;li>Jenkins&lt;/li>
+&lt;li>Maven&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Web servers&lt;/summary>
+&lt;ul>
+&lt;li>Ngnix&lt;/li>
+&lt;li>Apache&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Networking administration&lt;/summary>
+&lt;ul>
+&lt;li>
+&lt;strong>Protocols&lt;/strong>: TCP/IP, DNS, DHCP, SNMP, VLANs, VPNs
+&lt;/li>
+&lt;li>
+&lt;strong>Devices&lt;/strong>: Routers, switches, firewalls, load balancers
+&lt;/li>
+&lt;li>
+&lt;strong>Services&lt;/strong>: Routing, NAT, QoS, IPv4/IPv6
+&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;details>
+&lt;summary>Documentation&lt;/summary>
+&lt;ul>
+&lt;li>markdown&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div style="flex: 1; padding-left: 10px;">
+&lt;!-- Right Column Content --> &lt;ul style="list-style-type: none;">
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M4 5h7" />
+&lt;path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+&lt;path d="M5 9c0 2.144 2.952 3.908 6.7 4" />
+&lt;path d="M12 20l4 -9l4 9" />
+&lt;path d="M19.1 18h-6.2" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Languages
+&lt;/h3>
+&lt;ul style="list-style-type: disc;">
+&lt;li>Arabic (Native)&lt;/li>
+&lt;li>English (B2)&lt;/li>
+&lt;li>French (B2)&lt;/li>
+&lt;li>Dutch (A2)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-school" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+&lt;path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Education
+&lt;/h3>
+&lt;p>Higher Institute of Technological Studies of Kairouan&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;h3>
+&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+&lt;path stroke="none" d="M0 0h24v24H0z" fill="none" />
+&lt;path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+&lt;/svg> &amp;nbsp; &amp;nbsp; Interests
+&lt;/h3>
+&lt;ul style="list-style-type: disc;">
+&lt;li>Reading&lt;/li>
+&lt;li>Swimming&lt;/li>
+&lt;li>Traveling&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/body>
+&lt;/html></description></item><item><title>Search</title><link>https://m-dhia.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/search/</guid><description/></item></channel></rss>

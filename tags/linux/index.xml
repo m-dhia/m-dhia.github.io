@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on m-dhia</title><link>https://m-dhia.github.io/tags/linux/</link><description>Recent content in Linux on m-dhia</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://m-dhia.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>RSA algorithm</title><link>https://m-dhia.github.io/p/rsa-algorithm/</link><pubDate>Sun, 24 Dec 2023 00:00:00 +0000</pubDate><guid>https://m-dhia.github.io/p/rsa-algorithm/</guid><description>&lt;h1 id="understanding-the-rsa-algorithm">Understanding the RSA Algorithm&lt;/h1>
+&lt;p>The RSA algorithm is a widely used encryption algorithm that serve to secure data transmission over the internet. It is named after its inventors, Ron Rivest, Adi Shamir, and Leonard Adleman, who introduced it in 1977. This algorithm is based on the mathematical properties of large prime numbers and their factorization, which makes it computationally secure.&lt;/p>
+&lt;h2 id="how-rsa-works">How RSA Works&lt;/h2>
+&lt;p>RSA is an asymmetric algorithm. It uses a pair of keys – a public key and a private key – to encrypt and decrypt data. The public key is shared with anons who wants to send encrypted data to the owner of the key, while the private key is kept secret and used by the key owner to decrypt the received data.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Key Generation&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Choose two distinct prime numbers, p and q.&lt;/li>
+&lt;li>Calculate n = p * q.&lt;/li>
+&lt;li>Calculate φ(n) = (p - 1) * (q - 1).&lt;/li>
+&lt;li>Choose an integer e such that 1 &amp;lt; e &amp;lt; φ(n) and gcd(e, φ(n)) = 1. This is the public exponent.&lt;/li>
+&lt;li>Calculate d = e^(-1) mod φ(n). This is the private exponent.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Encryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Convert the plaintext message into an integer m, where 0 &amp;lt; m &amp;lt; n.&lt;/li>
+&lt;li>Compute the ciphertext c = m^e mod n.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Decryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>To decrypt the ciphertext c, compute the plaintext message m = c^d mod n.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="example">Example&lt;/h2>
+&lt;p>Let&amp;rsquo;s go through a simple example to illustrate how RSA works:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Key Generation&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Choose p = 61 and q = 53.&lt;/li>
+&lt;li>Calculate n = 61 * 53 = 3233.&lt;/li>
+&lt;li>Calculate φ(n) = (61 - 1) * (53 - 1) = 3120.&lt;/li>
+&lt;li>Choose e = 17.&lt;/li>
+&lt;li>Calculate d = 2753, since 17 * d ≡ 1 (mod 3120).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Encryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Assume we want to encrypt the message &amp;ldquo;HELLO&amp;rdquo;.&lt;/li>
+&lt;li>Convert &amp;ldquo;HELLO&amp;rdquo; to its ASCII representation: H=72, E=69, L=76, L=76, O=79.&lt;/li>
+&lt;li>Combine the ASCII values: 7269767679.&lt;/li>
+&lt;li>Encrypt each block: 7269767679^17 mod 3233 = 2409 2754 1253 1253 1968.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Decryption&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>To decrypt the ciphertext, we use the private key (d, n).&lt;/li>
+&lt;li>Decrypt each block: 2409^2753 mod 3233 = 72 (H), 2754^2753 mod 3233 = 69 (E), 1253^2753 mod 3233 = 76 (L), 1253^2753 mod 3233 = 76 (L), 1968^2753 mod 3233 = 79 (O).&lt;/li>
+&lt;li>Convert back to ASCII: 72=H, 69=E, 76=L, 76=L, 79=O.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="using-rsa-in-linux">Using RSA in Linux&lt;/h2>
+&lt;p>In Linux, you can use the &lt;code>openssl&lt;/code> command-line tool to work with RSA encryption and decryption.&lt;/p>
+&lt;h3 id="generating-rsa-keys">Generating RSA Keys&lt;/h3>
+&lt;p>To generate an RSA key pair, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl genpkey -algorithm RSA -out private_key.pem -aes256
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command generates a new RSA private key and encrypts it with AES 256-bit encryption. You will be prompted to enter a passphrase to protect the private key.
+You can then extract the public key from the private key using the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl rsa -in private_key.pem -pubout -out public_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="encrypting-and-decrypting-data">Encrypting and Decrypting Data&lt;/h3>
+&lt;p>Once you have generated your RSA key pair, you can use them to encrypt and decrypt data.&lt;/p>
+&lt;h4 id="encryption">Encryption&lt;/h4>
+&lt;p>To encrypt a file using the public key, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl pkeyutl -encrypt -in plaintext.txt -out encrypted.txt -pubin -inkey public_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;ul>
+&lt;li>pubin: This option indicates that the input key specified with -inkey is a public key. This is necessary when using a public key for encryption.&lt;/li>
+&lt;li>inkey public_key.pem: This specifies the input file containing the public key (public_key.pem) that will be used for encryption.&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>This command encrypts the contents of plaintext.txt using the public key from public_key.pem and saves the encrypted data to encrypted.txt.&lt;/p>
+&lt;h4 id="decryption">Decryption&lt;/h4>
+&lt;p>To decrypt the encrypted file using the private key, you can use the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">openssl pkeyutl -decrypt -in encrypted.txt -out decrypted.txt -inkey private_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command decrypts the contents of encrypted.txt using the private key from private_key.pem and saves the decrypted data to decrypted.txt.&lt;/p></description></item></channel></rss>
