@@ -53,7 +53,7 @@ toc: false
             <path d="M8 8l0 .01" />
             <path d="M12 16l0 -5" />
             <path d="M16 16v-3a2 2 0 0 0 -4 0" />
-          </svg>: <a href="https://www.linkedin.com/in/mohamed-dhia-aouina-125014298/" target="_blank">Linkedin</a>
+          </svg>: <a href="https://www.linkedin.com/in/mohamed-dhia-aouina-68788a2b5/" target="_blank">Linkedin</a>
         </li>
       </ul>
     </div>
